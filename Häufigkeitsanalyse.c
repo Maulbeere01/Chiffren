@@ -31,12 +31,12 @@ int frequencyAnalysis(char *text)
         }
     }
 
-    printf("Der meist auftauchende Buchstabe im geheim Text ist: %c\n", index + 'a');
+    //printf("Der meist auftauchende Buchstabe im geheim Text ist: %c\n", index + 'a');
 
     // bestimmt aus dem häufigst vorkommenden Buchstaben den Verschiebewert, mithilfe des in der deutschen Sprache am häufigst genutzten Buchstaben 'e'.
     int decryptedShiftValue = (index - ('e' - 'a') + 26) % 26; // // +26, da für häufigster buchstaben a bis d für -(e - a(4)) negative Werte rauskommen; -4 + 26 = Verschiebung um 22. Und mod 26, da Werte größer null dann z.b 3 + 26 = 29 mod 26 = 3 wieder werden.
 
-    printf("Die Buchstaben wurden um %d verschoben.\n\n", decryptedShiftValue);
+    //printf("Die Buchstaben wurden um %d verschoben.\n\n", decryptedShiftValue);
 
     return decryptedShiftValue;
 }

@@ -14,8 +14,8 @@ void VigenereEncryption(char *text, char *secretKey) {
     const char *tempSecretKey = strlwr(secretKey);
     const int lengthSecretKey = strlen(tempSecretKey);
 
-    printf("\nLength of key is %d\n", lengthSecretKey);
-    printf("\nOriginal Text: %s\n", text);
+    //printf("\nLength of key is %d\n", lengthSecretKey);
+    //printf("\nOriginal Text: %s\n", text);
 
     int keyIndex = 0;
 
@@ -32,7 +32,7 @@ void VigenereEncryption(char *text, char *secretKey) {
             keyIndex++;
         }
     }
-    printf("\nEncrypted Text: %s\n", text);
+    //printf("\nEncrypted Text: %s\n", text);
 }
 
 

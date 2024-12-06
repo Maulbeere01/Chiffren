@@ -19,5 +19,5 @@ void CaeserChiffreDecryption(char *text, int decryptedShiftValue)
         }
     }
 
-    printf("Der entschlüsselte Text lautet:\n%s\n", text);
+    //printf("Der entschlüsselte Text lautet:\n%s\n", text);
 }

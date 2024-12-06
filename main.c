@@ -1,24 +1,12 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
-
+#include <stdlib.h>
 #include "Encryption.h"
 #include "VigenereEncryption.h"
 #include "Häufigkeitsanalyse.h"
 #include "Decryption.h"
 
-#define MAX_DIVISOR 1000 // Maximale Größe für Divisoren-Zählung
-
-// Funktion, um den größten gemeinsamen Teiler (GCD) zu berechnen
-int gcd(int a, int b) {
-    while (b != 0) {
-        int temp = b;
-        b = a % b;
-        a = temp;
-    }
-    return a;
-}
-
+// fuer linux:  git config --global core.autocrlf input
 
 int main() {
     /*
@@ -31,7 +19,7 @@ int main() {
 
         CaeserChiffreDecryption(text, decryptedShiftValue); */
 
-    /*char VigenereText[] = "Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht";
+    char VigenereText[] = "Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht";
     char secretKey[] = "Berta";
 
     VigenereEncryption(VigenereText, secretKey);
@@ -53,73 +41,105 @@ int main() {
         }                                                                  //             |
     }                                                                     //              |
 
-    printf("\ntemp Vigenere Text:%s", tempText);*/
+    //printf("\ntemp Vigenere Text:%s", tempText);
 
 
 
 
-char tempText[] = "fiqfiqiouoelothfiqttxoshseloijmaqejxdhhfddtelohrsnzvrgfghgelfrwguhsdlfshfiqjgxogxodijngftvjckiexueofigfrqjckumhirofbhodlhsrodhsndmszbpsfnwjeujngjevfrhjnpbllheqgldhgh";
 
     int length = strlen(tempText); // Länge des Strings berechnen
-    int arr[100];                  // Array für Indizes von j
-    int distances[100];            // Array für die Abstände
-    int arrCount = 0;              // Zähler für gespeicherte Werte in arr
+    int distances[length];            // Array für die Abstände, hier kann ich noch distances mit NULL initialisieren und fuer jeden gefunden Abstand mit realloc das array vergroessern um Speicherplatzverschwendung zu vermeiden
 
-    // Schritt 1: Abstände berechnen
+
+    for (int i = 0; i < length; i++) {
+        distances[i] = 0;
+    }
+    // Schritt 1: Abstände berechnen. Manche Abstände werden doppelt gezählt
     for (int i = 0; i <= length - 3; i++) {
         for (int j = i + 3; j <= length - 3; j++) {
             if (tempText[i] == tempText[j] &&
                 tempText[i + 1] == tempText[j + 1] &&
                 tempText[i + 2] == tempText[j + 2]) {
 
-                // Überprüfen, ob j schon im Array vorhanden ist
-                int alreadyInArray = 0;
-                for (int k = 0; k < arrCount; k++) {
-                    if (arr[k] == j) {
-                        alreadyInArray = 1;
-                        break;
-                    }
+                int k = 0;
+                while(distances[k] != 0) {
+                    k++;
                 }
+                distances[k] = j - i;
+                printf("Abstand von %c%c%c (an Stelle %d) zur Wiederholung ist %d und an Index %d in distances gespeichert\n", tempText[i],tempText[i+1], tempText[i+2], i, distances[k], k);
+                }
+        }
+    }
+    // wir berechnen jeweils den kleinsten Teiler fuer jeden Abstand
+    int smallestDivisors[100];
 
-                // Nur weiter verarbeiten, wenn j noch nicht im Array ist
-                if (!alreadyInArray) {
-                    distances[arrCount] = j - i;
-                    arr[arrCount] = j;
-                    arrCount++;
-                }
+    for (int i = 0; i < 100; i++) {
+        smallestDivisors[i] = 0;
+    }
+
+    printf("kleinste gemeinsame Teiler sind: ");
+    for(int i = 0; distances[i] != 0; i++) {
+        for(int j = 2; j < length; j++) {
+            if(distances[i] % j == 0) {
+                smallestDivisors[i] = j;
+                printf("%d ", smallestDivisors[i]);
+                break;
             }
         }
     }
-
-    // Schritt 2: Häufigkeiten der Teiler berechnen
-    int divisorCount[MAX_DIVISOR] = {0}; // Array für Teiler-Häufigkeiten
-    for (int i = 0; i < arrCount; i++) {
-        for (int d = 2; d <= distances[i]; d++) {
-            if (distances[i] % d == 0) {
-                divisorCount[d]++;
-            }
+    // wir berrechnen den kgT aller Teiler
+    int kgT = -1;
+    for(int i = 0; smallestDivisors[i] != 0; i++) {
+        if(smallestDivisors[i] > kgT){
+            kgT = smallestDivisors[i];
         }
     }
+    printf("\nkgT aller Abstände ist %d", kgT);
 
-    // Schritt 3: Häufigsten Teiler finden
-    int mostFrequentDivisor = 1;
-    int highestFrequency = 0;
-    for (int d = 1; d < MAX_DIVISOR; d++) {
-        if (divisorCount[d] > highestFrequency) {
-            mostFrequentDivisor = d;
-            highestFrequency = divisorCount[d];
+    // Wir erstellen ein array welches wiederum strings enthält
+
+    char **strings = malloc((kgT * sizeof(char *)));
+
+    for (int i = 0; i < kgT; i++) {
+        strings[i] = malloc(((length / kgT) + 2) * sizeof(char));
+    }
+
+    if (strings == NULL) {
+        printf("speicherzuweisung fehlgeschlagen\n");
+        return 1;
+    }
+
+    for (int i = 0; i < kgT; i++) {
+        int j = 0;
+        for (int k = i; k < length; k += kgT) { // i bestimmt den String in den geschrieben wird, j bestimmt den Platz des Characters im string,
+            strings[i][j] = tempText[k];
+            j++;
         }
+        strings[i][j] = '\0';
+    }
+    for (int i = 0; i < kgT; i++) {
+        printf("\n%s\n", strings[i]);
     }
 
-    // Ergebnis ausgeben
-    printf("\nGespeicherte Abstände in distances[]: ");
-    for (int k = 0; k < arrCount; k++) {
-        printf("%d ", distances[k]);
+
+    int *shiftValues = malloc((kgT * sizeof(int)));
+
+    for (int i = 0; i < kgT; i++) {
+        shiftValues[i] = frequencyAnalysis(strings[i]);
     }
 
-    printf("\nDer häufigste gemeinsame Teiler ist: %d (Häufigkeit: %d)\n", mostFrequentDivisor, highestFrequency);
+    for (int i = 0; i < kgT; i++) {
+        free(strings[i]);
+    }
+    free(strings);
 
-    return 0;
+    for (int i = 0; i < kgT; i++) {
+       printf("%d ", shiftValues[i]);
+    }
+
+
+
+    free(shiftValues);
 }
 
 
@@ -127,65 +147,3 @@ char tempText[] = "fiqfiqiouoelothfiqttxoshseloijmaqejxdhhfddtelohrsnzvrgfghgelf
 
 
 
-/*
-#define MAX_FOLGEN 100 // Maximale Anzahl an einzigartigen Dreierfolgen
-
-
-        char tempText[] = "fiqfiqiouoelothfiqttxoshseloijmaqejxdhhfddtelohrsnzvrgfghgelfrwguhsdlfshfiqjgxogxodijngftvjckiexueofigfrqjckumhirofbhodlhsrodhsndmszbpsfnwjeujngjevfrhjnpbllheqgldhgh";
-
-        int length = strlen(tempText); // Länge des Strings vorab berechnen
-        char processed[MAX_FOLGEN][4]; // Array für bereits verarbeitete Dreierfolgen
-        int processedCount = 0; // Zähler für einzigartige Dreierfolgen
-
-        // Maximale Anzahl an möglichen Abständen
-        const int maxOccurrences = 100;
-        int distances[maxOccurrences]; // Array für Abstände
-        int distancesCount = 0; // Zähler für die Abstände
-
-        for (int i = 0; i <= length - 3; i++) { // Länge-3, um nicht über den Bereich zu gehen
-            // Dreierfolge extrahieren
-            char current[4] = { tempText[i], tempText[i + 1], tempText[i + 2], '\0' };
-
-            // Prüfen, ob die Dreierfolge bereits verarbeitet wurde
-            bool alreadyProcessed = false;
-            for (int k = 0; k < processedCount; k++) {
-                if (strcmp(processed[k], current) == 0) {
-                    alreadyProcessed = true;
-                    break;
-                }
-            }
-
-            // Überspringen, wenn die Dreierfolge schon verarbeitet wurde
-            if (alreadyProcessed) {
-                continue;
-            }
-
-            // Neue Dreierfolge in die Liste der verarbeiteten Folgen hinzufügen
-            strcpy(processed[processedCount++], current);
-
-            // Abstände für die aktuelle Dreierfolge berechnen
-            distancesCount = 0; // Zurücksetzen des Zählers für jede neue Dreierfolge
-            for (int j = i + 3; j <= length - 3; j++) {
-                if (tempText[i] == tempText[j] &&
-                    tempText[i + 1] == tempText[j + 1] &&
-                    tempText[i + 2] == tempText[j + 2]) {
-
-                    // Abstand berechnen und speichern
-                    distances[distancesCount++] = j - i;
-                    }
-            }
-
-            // Nur ausgeben, wenn mindestens ein Abstand gefunden wurde
-            if (distancesCount > 0) {
-                printf("\nDreierfolge %s gefunden bei Index %d. Abstände: ",
-                       current, i);
-
-                for (int k = 0; k < distancesCount; k++) {
-                    printf("%d ", distances[k]);
-                }
-            }
-        }
-
-        return 0;
-    }
-    */
