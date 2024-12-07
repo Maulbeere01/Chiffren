@@ -4,5 +4,5 @@
 
 #ifndef LETTER_SEQUENCES_H
 #define LETTER_SEQUENCES_H
-int* find_letter_sequences(char *text, int length);
+int* find_letter_sequences(char *text, const unsigned long int length);
 #endif //LETTER_SEQUENCES_H

@@ -15,6 +15,8 @@ add_executable(untitled2 main.c Encryption.c Häufigkeitsanalyse.c Encryption.h 
         find_key_length.c
         find_key_length.h
         split_into_n_strings.c
-        split_into_n_strings.h)
+        split_into_n_strings.h
+        string_operations.c
+        string_operations.h)
 
 

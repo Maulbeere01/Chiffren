@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int* find_letter_sequences(char *text, int length) {
+int* find_letter_sequences(char *text, const unsigned long int length) {
 
     int *distances = NULL;  // leeres Array initialisieren
     int index = 0;             // zählt wie viele Elemente dem array hinzugefügt wurden
@@ -25,7 +25,7 @@ int* find_letter_sequences(char *text, int length) {
 
                 distances = realloc(distances, (index + 1) * sizeof(int));
                 distances[index] = j - i;
-                printf("Abstand von %c%c%c (an Stelle %d) zur Wiederholung ist %d und an Index %d in distances gespeichert\n", text[i],text[i+1], text[i+2], i, distances[index], index);
+                printf("\nAbstand von %c%c%c (an Stelle %d) zur Wiederholung ist %d und an Index %d in distances gespeichert\n", text[i],text[i+1], text[i+2], i, distances[index], index);
                 index++;
                 }
         }

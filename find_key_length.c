@@ -11,7 +11,7 @@ int find_key_size(int *distances, const int length) {
     int *smallestDivisors = NULL;
     int index = 0;
 
-    printf("kleinste gemeinsame Teiler sind: ");
+    printf("\nkleinste gemeinsame Teiler sind: ");
     for(int i = 0; distances[i] != 0; i++) {
         for(int j = 2; j < length; j++) {
             if(distances[i] % j == 0 ) {
@@ -33,7 +33,7 @@ int find_key_size(int *distances, const int length) {
             kgT = smallestDivisors[i];
         }
     }
-    printf("\nkgT aller Abstände ist %d", kgT);
+    printf("\n\nkgT aller Abstände ist %d\n", kgT);
     free(smallestDivisors);
     return kgT;
 }

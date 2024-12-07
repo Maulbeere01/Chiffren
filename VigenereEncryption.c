@@ -3,6 +3,8 @@
 //
 #include <stdio.h>
 #include <string.h>
+#include "string_operations.h"
+
 // braucht ein Schlüssel mit dem Geheimtext verschlüsselt wird. Dabei wird der Index der Buchstaben im Alphabet des Schlüssels verwendet um die Verschiebung der Buchstaben im Geheimtext zu bestimmen.
 // ist der Schlüssel tom so wird der erste Buchstabe im Text um 20 (t ist der 20te Buchstabe im Alphabet) verschoben, der zweite Buchstabe um 15 und der dritte um 13. Der vierte Buchstabe wird dann wieder um den ersten Buchstabe des Schlüssels verschoben
 // Die Verschlüsselung wird mit zunehmender Länge des Schlüssels und abnehmender Länge des Textes schwierger zu knacken
@@ -11,7 +13,7 @@
 
 void VigenereEncryption(char *text, char *secretKey) {
 
-    const char *tempSecretKey = strlwr(secretKey);
+    const char *tempSecretKey = strlower(secretKey);
     const int lengthSecretKey = strlen(tempSecretKey);
 
     //printf("\nLength of key is %d\n", lengthSecretKey);
