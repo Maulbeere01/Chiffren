@@ -7,6 +7,14 @@ add_executable(untitled2 main.c Encryption.c Häufigkeitsanalyse.c Encryption.h 
         Decryption.c
         Decryption.h
         VigenereEncryption.c
-        VigenereEncryption.h)
+        VigenereEncryption.h
+        Kasiski_Test.c
+        Kasiski_Test.h
+        Letter_Sequences.c
+        Letter_Sequences.h
+        find_key_length.c
+        find_key_length.h
+        split_into_n_strings.c
+        split_into_n_strings.h)
 
 
