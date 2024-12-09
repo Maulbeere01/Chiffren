@@ -20,7 +20,7 @@ int main() {
         CaeserChiffreDecryption(text, decryptedShiftValue); */
 
     char VigenereText[] = "Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht";
-    char secretKey[] = "ben";
+    char secretKey[] = "luis";
    
     VigenereEncryption(VigenereText, secretKey);
 

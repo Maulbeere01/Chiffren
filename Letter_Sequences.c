@@ -25,13 +25,19 @@ int* find_letter_sequences(char *text, const unsigned long int length) {
 
                 distances = realloc(distances, (index + 1) * sizeof(int));
                 distances[index] = j - i;
+                /*
                 printf("\nAbstand von %c%c%c (an Stelle %d) zur Wiederholung ist %d und an Index %d in distances gespeichert\n", text[i],text[i+1], text[i+2], i, distances[index], index);
+                */
                 index++;
                 }
         }
     }
     distances = realloc(distances, (index + 1) * sizeof(int));
     distances[index] = 0;
-
+    printf("die Abstaende sind:\n");
+    for (int i = 0; distances[i] != 0; i++)
+    {
+        printf("%d ", distances[i]);
+    }
     return distances;
 }
