@@ -34,10 +34,10 @@ int* find_letter_sequences(char *text, const unsigned long int length) {
     }
     distances = realloc(distances, (index + 1) * sizeof(int));
     distances[index] = 0;
-    printf("die Abstaende sind:\n");
+    /*printf("die Abstaende sind:\n");
     for (int i = 0; distances[i] != 0; i++)
     {
         printf("%d ", distances[i]);
-    }
+    }*/
     return distances;
 }

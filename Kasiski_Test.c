@@ -16,7 +16,7 @@
 void kasiski_test(char *encrypted_text) {
 
     const unsigned long int length_encrypted_text = strlen(encrypted_text);
-    printf("\nlength of encrypted text is %ld\n", length_encrypted_text);
+    /*printf("\nlength of encrypted text is %ld\n", length_encrypted_text);*/
 
     char text[length_encrypted_text];
     strcpy(text, encrypted_text);
@@ -32,7 +32,7 @@ void kasiski_test(char *encrypted_text) {
     //printf("\nText aus nur kleinen Buchstaben: %s\n", text);
 
     const unsigned long int length = strlen(text); // Länge des Strings berechnen
-    printf("\nlength of cleaned text is %ld\n", length);
+    /*printf("\nlength of cleaned text is %ld\n", length);*/
 
     int *distances = find_letter_sequences(text, length);
     int key_Size = find_key_size(distances, length);
@@ -51,11 +51,12 @@ void kasiski_test(char *encrypted_text) {
     }
     free(strings);
 
-    printf("\n");
+    /*printf("\n");
     for (int i = 0; i < key_Size; i++) {
        printf("%d ", shiftValues[i]);
     }
-    printf("\n");
+    printf("\n");*/
+
     char *secret_word = shiftValues_to_word(shiftValues, key_Size);
     free(distances);
     free(shiftValues);

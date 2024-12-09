@@ -11,7 +11,7 @@ char *shiftValues_to_word(int *shiftValues, int key_size){
     j++;
   }
   secret_word[key_size] = '\0';
-  printf("%d\n", key_size);
-  printf("Geheimwort ist %s\n", secret_word);
+
+  printf("\nGeheimwort ist: %s\n\n", secret_word);
   return secret_word;
 }
