@@ -5,7 +5,7 @@
 #include <stdlib.h>
 // teilt den Geheimtext in so viele Strings wie der Schlüssel lang ist. In die Strings kommen dann jeweils die Buchstaben, die vom gleichen Buchstaben verschlüsselt wurden
 
-char **split_into_subarrays(char *text,int n,const unsigned long int length) {
+char **split_into_n_strings(char *text,int n,const unsigned long int length) {
 
     // wir allokieren ein array mit so vielen Strings wie wir keys haben
     char **strings = malloc((n * sizeof(char *)));

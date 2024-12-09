@@ -17,6 +17,10 @@ add_executable(untitled2 main.c Encryption.c Häufigkeitsanalyse.c Encryption.h 
         split_into_n_strings.c
         split_into_n_strings.h
         string_operations.c
-        string_operations.h)
+        string_operations.h
+        shiftValues_to_word.c
+        shiftValues_to_word.h
+        Decryption_Vigenere.c
+        Decryption_Vigenere.h)
 
 
