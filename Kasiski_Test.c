@@ -13,6 +13,8 @@
 #include "Decryption_Vigenere.h"
 
 
+
+
 void kasiski_test(char *encrypted_text) {
 
     const unsigned long int length_encrypted_text = strlen(encrypted_text);
@@ -63,6 +65,6 @@ void kasiski_test(char *encrypted_text) {
 
     decrypt_vignere(encrypted_text, secret_word, key_Size);
 
-    printf("Der entschluesselte Text ist:\n%s\n", encrypted_text);
+    /*printf("Der entschluesselte Text ist:\n%s\n", encrypted_text);*/
     }
 

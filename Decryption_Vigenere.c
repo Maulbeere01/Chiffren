@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "check_if_cracked.h"
 
 void decrypt_vignere(char *text, char *secret_key, int key_size)
 {
@@ -26,4 +27,10 @@ void decrypt_vignere(char *text, char *secret_key, int key_size)
     /*
     printf("%s\n", text);
     */
+    float sucessful = check_if_cracked(text);
+
+    if(sucessful < 25) {
+
+    }
+
 }

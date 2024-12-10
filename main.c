@@ -27,7 +27,7 @@ int main() {
     /*
     printf("\n%s\n", VigenereText);
     */
-    /*kasiski_test(VigenereText);*/
+    kasiski_test(VigenereText);
 
 }
 
