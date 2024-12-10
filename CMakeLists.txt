@@ -21,6 +21,8 @@ add_executable(untitled2 main.c Encryption.c Häufigkeitsanalyse.c Encryption.h 
         shiftValues_to_word.c
         shiftValues_to_word.h
         Decryption_Vigenere.c
-        Decryption_Vigenere.h)
+        Decryption_Vigenere.h
+        check_if_cracked.c
+        check_if_cracked.h)
 
 
