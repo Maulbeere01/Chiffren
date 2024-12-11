@@ -17,7 +17,7 @@ char *extract_letters(char *text)
 {
     for (int i = 0; text[i] != '\0'; i++)
     {
-        if(text[i] < 'a' || text[i] > 'z')
+        if (text[i] < 'a' || text[i] > 'z')
         {
             for (int j = i; text[j] != '\0'; j++)
             {

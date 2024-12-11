@@ -68,7 +68,7 @@ float check_if_cracked(char *text)
             /*printf("%s ", word);*/
         }
     }
-    printf("\ncounter: %d", counter);
+    //printf("\ncounter: %d", counter);
 
     for(int i = 0; words_in_text[i] != NULL; i++) {
         free(words_in_text[i]);

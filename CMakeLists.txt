@@ -4,8 +4,8 @@ project(untitled2 C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(untitled2 main.c Encryption.c Häufigkeitsanalyse.c Encryption.h Häufigkeitsanalyse.h
-        Decryption.c
-        Decryption.h
+        Ceaser-Chiffre/Ceaser_Decryption.c
+        Ceaser-Chiffre/Ceaser_Decryption.h
         VigenereEncryption.c
         VigenereEncryption.h
         Kasiski_Test.c

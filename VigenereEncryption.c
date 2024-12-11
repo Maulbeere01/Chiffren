@@ -10,9 +10,8 @@
 // Die Verschlüsselung wird mit zunehmender Länge des Schlüssels und abnehmender Länge des Textes schwierger zu knacken
 
 
-
-void VigenereEncryption(char *text, char *secretKey) {
-
+void VigenereEncryption(char *text, char *secretKey)
+{
     const char *tempSecretKey = strlower(secretKey);
     const int lengthSecretKey = strlen(tempSecretKey);
 
@@ -21,14 +20,13 @@ void VigenereEncryption(char *text, char *secretKey) {
 
     int keyIndex = 0;
 
-    for(int i = 0; text[i] != '\0'; i++)
+    for (int i = 0; text[i] != '\0'; i++)
     {
         if (text[i] >= 'a' && text[i] <= 'z')
         {
             text[i] = (text[i] - 'a' + (tempSecretKey[keyIndex % lengthSecretKey] - 'a')) % 26 + 'a';
             keyIndex++;
-        }
-        else if (text[i] >= 'A' && text[i] <= 'Z')
+        } else if (text[i] >= 'A' && text[i] <= 'Z')
         {
             text[i] = (text[i] - 'A' + (tempSecretKey[keyIndex % lengthSecretKey] - 'a')) % 26 + 'A';
             keyIndex++;
@@ -36,5 +34,3 @@ void VigenereEncryption(char *text, char *secretKey) {
     }
     //printf("\nEncrypted Text: %s\n", text);
 }
-
-

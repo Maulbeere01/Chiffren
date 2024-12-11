@@ -18,6 +18,5 @@ void CaeserChiffreDecryption(char *text, int decryptedShiftValue)
             text[i] = (text[i] - 'A' - decryptedShiftValue + 26) % 26 + 'A';
         }
     }
-
     //printf("Der entschlüsselte Text lautet:\n%s\n", text);
 }

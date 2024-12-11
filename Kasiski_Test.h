@@ -4,5 +4,6 @@
 
 #ifndef KASISKI_TEST_H
 #define KASISKI_TEST_H
+
 void kasiski_test(char *text);
 #endif //KASISKI_TEST_H
