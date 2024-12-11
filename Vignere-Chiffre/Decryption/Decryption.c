@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "check_if_cracked.h"
+
 
 void decrypt_vignere(char *text, char *secret_key, int key_size)
 {

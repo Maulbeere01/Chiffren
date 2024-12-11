@@ -69,7 +69,6 @@ int find_key_size(int *distances, const int length)
     /*printf("max in smallestDivisors is: %d", max);*/
 
     int count_array[max];
-    // leer initialisieren
     for (int i = 0; i < max; i++)
     {
         count_array[i] = 0;
@@ -82,18 +81,7 @@ int find_key_size(int *distances, const int length)
 
     int key_length = find_biggest_most_common_element(count_array, max);
 
-    //printf("\nkey length is %d\n", key_length);
+    /*printf("\nkey length is %d\n", key_length);*/
 
     return key_length;
-
-
-    /*int kgT = -1;
-    for(int i = 0; smallestDivisors[i] != 0; i++) {
-        if(smallestDivisors[i] > kgT){
-            kgT = smallestDivisors[i];
-        }
-    }
-    printf("\n\nkgT aller Abstände ist %d\n", kgT);
-    free(smallestDivisors);
-    return kgT;*/
 }

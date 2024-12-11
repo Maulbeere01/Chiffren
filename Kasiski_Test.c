@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
 #include "check_if_cracked.h"
 #include "Frequency_Analasys.h"
 #include "Letter_Sequences.h"
@@ -12,7 +11,7 @@
 #include "Split_into_n_Strings.h"
 #include "String_Operations.h"
 #include "Shift_Values_to_Word.h"
-#include "Decryption_Vigenere.h"
+#include "Vignere-Chiffre/Decryption/Decryption.h"
 
 void kasiski_test(char *input_text)
 {
