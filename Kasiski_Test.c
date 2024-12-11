@@ -6,12 +6,12 @@
 #include <stdlib.h>
 
 #include "check_if_cracked.h"
-#include "Häufigkeitsanalyse.h"
+#include "Frequency_Analasys.h"
 #include "Letter_Sequences.h"
-#include "find_key_length.h"
-#include "split_into_n_strings.h"
-#include "string_operations.h"
-#include "shiftValues_to_word.h"
+#include "Find_Key_Length.h"
+#include "Split_into_n_Strings.h"
+#include "String_Operations.h"
+#include "Shift_Values_to_Word.h"
 #include "Decryption_Vigenere.h"
 
 void kasiski_test(char *input_text)
@@ -40,7 +40,7 @@ void kasiski_test(char *input_text)
     float german_similarity = -1;
 
 
-    int initial_key_size = key_length;
+    int intial_key_length = key_length;
 
     char *secret_word = NULL;
 
@@ -48,7 +48,7 @@ void kasiski_test(char *input_text)
     {
         if (german_similarity != -1)
         {
-            key_length += initial_key_size;
+            key_length += intial_key_length;
         }
         strcpy(encrypted_text, input_text);
 
@@ -89,5 +89,6 @@ void kasiski_test(char *input_text)
     printf("\nGeheimwort ist: %s\n\n", secret_word);
     free(secret_word);
 
+    printf("Entschlüsselter Text ist: \n%s", encrypted_text);
     /*printf("Der entschluesselte Text ist:\n%s\n", encrypted_text);*/
 }

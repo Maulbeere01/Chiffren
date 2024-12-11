@@ -3,11 +3,11 @@ project(untitled2 C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(untitled2 main.c Encryption.c Häufigkeitsanalyse.c Encryption.h Häufigkeitsanalyse.h
+add_executable(untitled2 main.c Ceaser-Chiffre/Encryption_Ceaser.c Frequency_Analasys.c Ceaser-Chiffre/Encryption_Ceaser.h Frequency_Analasys.h
         Ceaser-Chiffre/Ceaser_Decryption.c
         Ceaser-Chiffre/Ceaser_Decryption.h
-        VigenereEncryption.c
-        VigenereEncryption.h
+        Vigenere_Encryption.c
+        Vigenere_Encryption.h
         Kasiski_Test.c
         Kasiski_Test.h
         Letter_Sequences.c
@@ -18,8 +18,8 @@ add_executable(untitled2 main.c Encryption.c Häufigkeitsanalyse.c Encryption.h 
         split_into_n_strings.h
         string_operations.c
         string_operations.h
-        shiftValues_to_word.c
-        shiftValues_to_word.h
+        Shift_Values_to_Word.c
+        Shift_Values_to_Word.h
         Decryption_Vigenere.c
         Decryption_Vigenere.h
         check_if_cracked.c

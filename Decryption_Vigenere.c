@@ -15,7 +15,8 @@ void decrypt_vignere(char *text, char *secret_key, int key_size)
         {
             text[i] = (text[i] - 'a' - (secret_key[keyIndex % key_size] - 'a') + 26) % 26 + 'a';
             keyIndex++;
-        } else if (text[i] >= 'A' && text[i] <= 'Z')
+        }
+        else if (text[i] >= 'A' && text[i] <= 'Z')
         {
             text[i] = (text[i] - 'A' - (secret_key[keyIndex % key_size] - 'a') + 26) % 26 + 'A';
             keyIndex++;

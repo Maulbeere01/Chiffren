@@ -18,7 +18,7 @@ int word_count(char* string) {
 
 float check_if_cracked(char *text)
 {
-    printf("\n%s\n", text);
+    
     FILE *file;
     file = fopen("words.txt", "r");
 
