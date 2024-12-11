@@ -35,10 +35,10 @@ char **split_into_n_strings(char *text,int n,const unsigned long int length) {
         strings[i][j] = '\0';
     }
 
-    printf("\nAusgabe der Strings:\n");
+    /*printf("\nAusgabe der Strings:\n");
     for (int i = 0; i < n; i++) {
         printf("\n%s\n", strings[i]);
-    }
+    }*/
 
     return strings;
 }

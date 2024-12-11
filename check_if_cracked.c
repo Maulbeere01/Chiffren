@@ -9,14 +9,14 @@
 int word_count(char* string) {
     int whitespace_count = 0;
     for(int i = 0; string[i] != '\0'; i++) {
-        if(string[i] == ' ') {
+        if(string[i] == ' ' && string[i-1] != ' ') {
             whitespace_count++;
         }
     }
     return whitespace_count;
 }
 
-int check_if_cracked(char *text)
+float check_if_cracked(char *text)
 {
     printf("\n%s\n", text);
     FILE *file;
@@ -35,7 +35,7 @@ int check_if_cracked(char *text)
 
     int count_word_length = 0; //zählt die Wortlänge, da diese in jedem neuen String wieder bei 0 beginnen muss
     int index_words = 0; // zählt die Anzahl an gezählten Wörtern in words_in_text
-    char **words_in_text = malloc(wordcount * sizeof(char *));
+    char **words_in_text = malloc((wordcount + 10) * sizeof(char *));
 
     for(int i = 0; text[i] != '\0'; i++) {
         if(text[i] == ' ') {
@@ -51,6 +51,7 @@ int check_if_cracked(char *text)
             count_word_length++;
         }
     }
+    words_in_text[index_words][count_word_length] = '\0';
     words_in_text[index_words + 1]= NULL;
 
     /*for(int i = 0;  words_in_text[i]!= NULL; i++) {
@@ -69,16 +70,12 @@ int check_if_cracked(char *text)
     }
     printf("\ncounter: %d", counter);
 
-
-
-    float german_similarity = (float) counter/wordcount * 100;
-
-    printf("\n%.2f\n", german_similarity);
-
-    for(int i = 0; words_in_text[i]!= NULL; i++) {
+    for(int i = 0; words_in_text[i] != NULL; i++) {
         free(words_in_text[i]);
     }
     free(words_in_text);
 
-    return counter;
+    float german_similarity = (float) counter/wordcount * 100;
+
+    return german_similarity;
 }
