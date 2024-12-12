@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <string.h>
-#include "Ceaser-Chiffre/Encryption_Ceaser.h"
-#include "Vignere-Chiffre/Encryption/Encryption.h"
-#include "Frequency_Analasys.h"
-#include "Ceaser-Chiffre/Ceaser_Decryption.h"
-#include "Kasiski_Test.h"
+#include "Ceaser-Chiffre/encryption_ceaser.h"
+#include "Vignere-Chiffre/Encryption/encryption.h"
+#include "frequency_analysis.h"
+#include "Ceaser-Chiffre/ceaser_decryption.h"
+#include "kasiski_test.h"
 
 // fuer linux:  git config --global core.autocrlf input
 
@@ -30,7 +30,7 @@ int main()
 
     VigenereEncryption(VigenereText, secretKey);
 
-    printf("\n%s\n", VigenereText);
+    printf("Der verschluesselte Text ist:\n%s\n", VigenereText);
 
     kasiski_test(VigenereText);
 }

@@ -5,13 +5,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include "check_if_cracked.h"
-#include "Frequency_Analasys.h"
-#include "Letter_Sequences.h"
-#include "Find_Key_Length.h"
-#include "Split_into_n_Strings.h"
-#include "String_Operations.h"
-#include "Shift_Values_to_Word.h"
-#include "Vignere-Chiffre/Decryption/Decryption.h"
+#include "frequency_analysis.h"
+#include "letter_sequences.h"
+#include "find_key_length.h"
+#include "split_into_n_strings.h"
+#include "string_operations.h"
+#include "shift_values_to_word.h"
+#include "Vignere-Chiffre/Decryption/decryption.h"
 
 void kasiski_test(char *input_text)
 {
@@ -88,6 +88,6 @@ void kasiski_test(char *input_text)
     printf("\nGeheimwort ist: %s\n\n", secret_word);
     free(secret_word);
 
-    printf("Entschlüsselter Text ist: \n%s", encrypted_text);
-    /*printf("Der entschluesselte Text ist:\n%s\n", encrypted_text);*/
+    /*printf("Entschlüsselter Text ist: \n%s", encrypted_text);*/
+    printf("Der entschluesselte Text ist:\n%s\n", encrypted_text);
 }
