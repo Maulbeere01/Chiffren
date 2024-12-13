@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
-// Häufigkeitsanalyse: erstellt ein array mit 26 Elementen. Für jeden Buchstaben im Geheimtext wird am passenden Index im array um eins erhöht, um am Ende die Anzahl jedes einzelnen Buchstaben im Geheimtext zu haben. Also an Stelle 0 wird für a gezählt, an Stelle 1 für b, etc.  int letterCount[26] = { 'a' : 3, 'b' : 2, ...}
-int frequencyAnalysis(char *text)
+// Wir bestimmen die Verteilung der Hauefigkeit jedes Buchstabens im Geheimtext. Diese Verteilung vergleichen wir mit der Hauefigkeitsverteilung der Buchstaben in der deutschen Sprache. Wir verschieben dafuer unsere Hauefigkeitsverteilung 26 mal und bestimmen wo die Abweichung von der Standardverteilung der deutschen Sprache am geringsten ist
+int frequencyAnalysis(const char *text)
 {
     //Array um die Häufigkeit jedes Buchstaben zu zählen, index 0 steht für a, index 1 steht für b, etc.
     double letterCount[26] = {0};
@@ -10,8 +10,7 @@ int frequencyAnalysis(char *text)
         letterCount[i] = 0;
     }
 
-    int highest = 0;
-    int index = 0;
+
 
     for (int i = 0; text[i] != 0; i++)
     {
@@ -78,6 +77,8 @@ int frequencyAnalysis(char *text)
     return index_smallest;
 
     /*
+    int highest = 0;
+    int index = 0;
     // Findet den am häufigsten vorkommenden Buchstaben und speichert den Index (Index 0 = häufigster Buchstabe ist a, Index 1 = häufigster Buchstabe ist b, etc.)
     for (int i = 0; i < 26; i++)
     {

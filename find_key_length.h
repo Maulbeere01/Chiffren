@@ -5,5 +5,5 @@
 #ifndef FIND_KEY_LENGTH_H
 #define FIND_KEY_LENGTH_H
 
-int find_key_size(int *distances, const int length);
+int find_key_length(int *distances, const unsigned long int length);
 #endif //FIND_KEY_LENGTH_H

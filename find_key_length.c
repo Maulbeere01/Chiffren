@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int find_biggest_most_common_element(int *count_array, int length)
+int find_biggest_most_common_element(const int *count_array, int length)
 {
     int biggest_element = 0;
     int index_element = -1;
@@ -23,7 +23,7 @@ int find_biggest_most_common_element(int *count_array, int length)
 }
 
 
-int find_max(int *arr)
+int find_max(const int *arr)
 {
     int max = 0;
     for (int i = 0; arr[i] != 0; i++)
@@ -35,10 +35,9 @@ int find_max(int *arr)
     }
     return max;
 }
-
-int find_key_size(int *distances, const int length)
+//Bestimmt die Schluessellaenge, indem der hauefigste und groesste vorkommende Teiler der Abstaende bestimmt wird.
+int find_key_length(const int *distances, const unsigned long int length)
 {
-    // wir berechnen jeweils den kleinsten Teiler fuer jeden Abstand LOGIKFEHLER: ich muss den groessten in allen vorkommenden Teiler finden, er muss nicht in allen vorkommenden sein, aber er sollte in den meisten vorkommen
     int *smallestDivisors = NULL;
     int index = 0;
 
@@ -50,6 +49,11 @@ int find_key_size(int *distances, const int length)
             if (distances[i] % j == 0)
             {
                 smallestDivisors = realloc(smallestDivisors, (index + 1) * sizeof(int));
+                if (smallestDivisors == NULL)
+                {
+                    printf("Speicherzuweisung Fehler ini find_key_length");
+                    return -1;
+                }
                 smallestDivisors[index] = j;
                 /*printf("%d ", smallestDivisors[index]);*/
                 index++; // hier den

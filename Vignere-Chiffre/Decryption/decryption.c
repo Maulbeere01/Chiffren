@@ -4,8 +4,7 @@
 
 #include <stdio.h>
 #include <string.h>
-
-
+// Entschluesselt Vigenere, indem mit dem Verschluesselwort, jeder Buchstabe im Geheimtext nach links verschoben wird
 void decrypt_vignere(char *text, char *secret_key, int key_size)
 {
     int keyIndex = 0;

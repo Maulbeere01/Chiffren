@@ -15,7 +15,7 @@ int word_count(char* string) {
     }
     return whitespace_count;
 }
-
+//Gibt die prozentuale Uebereinstimmung des geknackten Textes mit den 1000 hauefigsten Woertern der deutschen Sprache zurueck
 float check_if_cracked(char *text)
 {
     
@@ -27,15 +27,16 @@ float check_if_cracked(char *text)
         return -1;
     }
 
-    int counter = 0;
+    int counter = 0; // zaehlt die Uebereinstimmungen
     int wordcount = word_count(text);
     char word[30];
 
     /*printf("length text is %d\n", length);*/
 
+    // wir erstellen ein Array mit allen Woertern aus unserem Geheimtext
     int count_word_length = 0; //zählt die Wortlänge, da diese in jedem neuen String wieder bei 0 beginnen muss
     int index_words = 0; // zählt die Anzahl an gezählten Wörtern in words_in_text
-    char **words_in_text = malloc((wordcount + 10) * sizeof(char *));
+    char **words_in_text = malloc((wordcount + 10) * sizeof(char *)); // +10 ist Puffer, da wordcount nicht 100% genau
 
     for(int i = 0; text[i] != '\0'; i++) {
         if(text[i] == ' ') {
@@ -58,6 +59,7 @@ float check_if_cracked(char *text)
         printf("%s\n", words_in_text[i]);
     }*/
 
+    // Prueft jedes Wort gegen jedes Wort in der File, bei einem Treffer wird counter hochgezaehlt und zum naechsten Wort uebergegangen
     for(int i = 0; words_in_text[i]!= NULL; i++) {
         rewind(file);
         while (fscanf(file, "%30s", word) != EOF) {

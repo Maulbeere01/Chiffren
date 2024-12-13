@@ -3,10 +3,15 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
-
-char *shiftValues_to_word(int *shiftValues, int key_size)
+// Ubersetzt die Verschiebewerte des Geheimwortes in eine Buchstabenfolge
+char *shift_values_to_word(const int *shiftValues, int key_size)
 {
     char *secret_word = (char *) malloc((key_size + 1) * sizeof(char));
+    if (secret_word == NULL)
+    {
+        printf("\nFehlerhafte Speicheranfrage in shift_values_to_word\n");
+        return NULL;
+    }
     int j = 0;
     for (int i = 0; i < key_size; i++)
     {

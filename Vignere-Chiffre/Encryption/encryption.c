@@ -12,7 +12,7 @@
 
 void VigenereEncryption(char *text, char *secretKey)
 {
-    const char *tempSecretKey = strlower(secretKey);
+    const char *tempSecretKey = str_lower(secretKey);
     const int lengthSecretKey = strlen(tempSecretKey);
 
     //printf("\nLength of key is %d\n", lengthSecretKey);

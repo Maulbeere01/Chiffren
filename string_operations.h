@@ -5,7 +5,7 @@
 #ifndef STRLWR_H
 #define STRLWR_H
 
-char *strlower(char *string);
+char *str_lower(char *string);
 
 char *extract_letters(char *text);
 #endif //STRLWR_H

@@ -3,8 +3,7 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
-// teilt den Geheimtext in so viele Strings wie der Schlüssel lang ist. In die Strings kommen dann jeweils die Buchstaben, die vom gleichen Buchstaben verschlüsselt wurden
-
+// teilt den Geheimtext in so viele Strings wie der Schlüssel Buchstaben hat. In die Strings kommen dann jeweils die Buchstaben des Geheimtextes, die vom gleichen Buchstaben des Geheimwortes  verschlüsselt wurden
 char **split_into_n_strings(char *text, int n, const unsigned long int length)
 {
     // wir allokieren ein array mit so vielen Strings wie wir keys haben

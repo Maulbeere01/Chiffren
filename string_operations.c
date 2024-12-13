@@ -2,8 +2,8 @@
 // Created by ben10 on 12/7/24.
 //
 #include <ctype.h>
-
-char *strlower(char *string)
+//Macht alle Grossbuchstaben in einem String zu Kleinbuchstaben
+char *str_lower(char *string)
 {
     for (int i = 0; string[i] != '\0'; i++)
     {
@@ -12,7 +12,7 @@ char *strlower(char *string)
     return string;
 }
 
-// entfernt alle Zeichen ausser a bis z
+// entfernt alle Zeichen ausser a bis z, auch leerzeichen, etc.
 char *extract_letters(char *text)
 {
     for (int i = 0; text[i] != '\0'; i++)

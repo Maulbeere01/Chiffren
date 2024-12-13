@@ -3,25 +3,29 @@ project(untitled2 C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(untitled2 main.c Ceaser-Chiffre/Encryption_Ceaser.c frequency_analysis.c Ceaser-Chiffre/Encryption_Ceaser.h frequency_analysis.h
-        Ceaser-Chiffre/Ceaser_Decryption.c
-        Ceaser-Chiffre/Ceaser_Decryption.h
-        Vignere-Chiffre/Encryption/Encryption.c
-        Vignere-Chiffre/Encryption/Encryption.h
-        Kasiski_Test.c
-        Kasiski_Test.h
-        Letter_Sequences.c
-        Letter_Sequences.h
-        Find_Key_Length.c
-        Find_Key_Length.h
-        Split_into_n_Strings.c
-        Split_into_n_Strings.h
-        String_Operations.c
-        String_Operations.h
-        Shift_Values_to_Word.c
-        Shift_Values_to_Word.h
-        Vignere-Chiffre/Decryption/Decryption.c
-        Vignere-Chiffre/Decryption/Decryption.h
+add_executable(untitled2 main.c
+        Ceaser-Chiffre/encryption_ceaser.c
+        frequency_analysis.c
+        Ceaser-Chiffre/encryption_ceaser.h
+        frequency_analysis.h
+        Ceaser-Chiffre/ceaser_decryption.c
+        Ceaser-Chiffre/ceaser_decryption.h
+        Vignere-Chiffre/Encryption/encryption.c
+        Vignere-Chiffre/Encryption/encryption.h
+        kasiski_test.c
+        kasiski_test.h
+        letter_sequences.c
+        letter_sequences.h
+        find_key_length.c
+        find_key_length.h
+        split_into_n_strings.c
+        split_into_n_strings.h
+        string_operations.c
+        string_operations.h
+        shift_values_to_word.c
+        shift_values_to_word.h
+        Vignere-Chiffre/Decryption/decryption.c
+        Vignere-Chiffre/Decryption/decryption.h
         check_if_cracked.c
         check_if_cracked.h)
 
