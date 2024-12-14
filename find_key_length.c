@@ -11,7 +11,7 @@ int find_biggest_most_common_element(const int *count_array, int length)
     int biggest_element = 0;
     int index_element = -1;
     // i > 2 würde die Schlüssellänge 2 ignoriert werden, der Text würde trotzdem korrekt entschlüsselt werden(da Schlüssel dann einfach zb bebe wäre), aber der ausgegebene Schlüssel wäre falsch
-    for (int i = length - 1; i > 1; i--)
+    for (int i = length - 1; i >= 1; i--)
     {
         if (count_array[i] > biggest_element)
         {
@@ -44,7 +44,7 @@ int find_key_length(const int *distances, const unsigned long int length)
     /*printf("\nTeiler der Abstaende sind:\n ");*/
     for (int i = 0; distances[i] != 0; i++)
     {
-        for (int j = 2; j < distances[i]; j++)
+        for (int j = 1; j < distances[i]; j++)
         {
             if (distances[i] % j == 0)
             {
