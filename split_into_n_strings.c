@@ -8,16 +8,19 @@ char **split_into_n_strings(char *text, int n, const unsigned long int length)
 {
     // wir allokieren ein array mit so vielen Strings wie wir keys haben
     char **strings = malloc((n * sizeof(char *)));
-
     if (strings == NULL)
     {
         printf("speicherzuweisung Fehler\n");
         return NULL;
     }
+
     //wir allokieren strings mit passender Größe und speichern sie in dem array strings
     for (int i = 0; i < n; i++)
     {
-        strings[i] = malloc(((length / n) + 1) * sizeof(char));
+        // allokiert speicher für jeden string mit der länge: ceil(length / n) + 1
+        // (length + n - 1) / n ist eine integer-berechnung, die ceil(length / n) nachbildet.
+        // das "+1" stellt sicher, dass genug platz für den null-terminator ('\0') vorhanden ist.
+        strings[i] = malloc(((length + n -1)/ n + 1) * sizeof(char));
 
         if (strings[i] == NULL)
         {

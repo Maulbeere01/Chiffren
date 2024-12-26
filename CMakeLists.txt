@@ -27,6 +27,8 @@ add_executable(untitled2 main.c
         Vignere-Chiffre/Decryption/decryption.c
         Vignere-Chiffre/Decryption/decryption.h
         check_if_cracked.c
-        check_if_cracked.h)
+        check_if_cracked.h
+        weighted_biggest_divisor.c
+        weighted_biggest_divisor.h)
 
-
+target_link_libraries(untitled2 m)

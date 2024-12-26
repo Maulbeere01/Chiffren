@@ -12,6 +12,7 @@
 #include "string_operations.h"
 #include "shift_values_to_word.h"
 #include "Vignere-Chiffre/Decryption/decryption.h"
+#include <math.h>
 
 void kasiski_test(const char *input_text)
 {
@@ -48,6 +49,7 @@ void kasiski_test(const char *input_text)
     float german_similarity = -1;
 
     // muss erhalten bleiben, da moeglicherweise die Vielfachen der urspruenglichen Schluessellaenge genutzt werden muessen
+    // mit weighted biggest divisor, wenn nicht korrekt, dann bei Schluessellaenge 1 anfangen und bruteforcen
     int intial_key_length = key_length;
 
     char *secret_word = NULL;
@@ -57,7 +59,7 @@ void kasiski_test(const char *input_text)
         if (german_similarity != -1)
         {
             // hiefuer brauchen wir die initiale Schluessellaenge
-            key_length += intial_key_length;
+            key_length += intial_key_length; // oder 1 oder 2? kann die korrekt laenge ueberspringej, zb schluessel 6 lang -> laenge 4 herausgefunden -> Fehler
         }
         strcpy(encrypted_text, input_text);
 
@@ -82,7 +84,7 @@ void kasiski_test(const char *input_text)
             shiftValues[i] = frequencyAnalysis(strings[i]);
         }
 
-
+        // Das free hier fuehrt bei Laenge 16 zu Fehlern, weiss nicht warum
         for (int i = 0; i < key_length; i++)
         {
             free(strings[i]);
