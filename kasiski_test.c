@@ -50,17 +50,10 @@ void kasiski_test(const char *input_text)
 
     // muss erhalten bleiben, da moeglicherweise die Vielfachen der urspruenglichen Schluessellaenge genutzt werden muessen
     // mit weighted biggest divisor, wenn nicht korrekt, dann bei Schluessellaenge 1 anfangen und bruteforcen
-    int intial_key_length = key_length;
+
 
     char *secret_word = NULL;
 
-    do
-    {
-        if (german_similarity != -1)
-        {
-            // hiefuer brauchen wir die initiale Schluessellaenge
-            key_length += intial_key_length; // oder 1 oder 2? kann die korrekt laenge ueberspringej, zb schluessel 6 lang -> laenge 4 herausgefunden -> Fehler
-        }
         strcpy(encrypted_text, input_text);
 
         // Wir erstellen ein array welches wiederum so viele strings enthält, wie der Geheimschlüssel Buchstaben hat
@@ -84,7 +77,6 @@ void kasiski_test(const char *input_text)
             shiftValues[i] = frequencyAnalysis(strings[i]);
         }
 
-        // Das free hier fuehrt bei Laenge 16 zu Fehlern, weiss nicht warum
         for (int i = 0; i < key_length; i++)
         {
             free(strings[i]);
@@ -111,15 +103,70 @@ void kasiski_test(const char *input_text)
 
 
         //printf("\nDer entschlüsselte Text besteht zu %.2f Prozent aus den 1000 häufigst genutzten Wörter der deutschen Sprache \n", german_similarity);
-    } while (german_similarity < 25 && german_similarity != -1);
 
+    //falls text nicht geknackt, dann brute force Methode: Schluesselaenge = 1 und fuer jeden Durchlauf ++
+    int counter = 1;
+    if (german_similarity < 25)
+    {
+        printf("Kassiski-Test fehlgeschlagen \nBrute-Force-Methode folgt\n");
+        do
+        {
+            strcpy(encrypted_text, input_text);
+
+            // Wir erstellen ein array welches wiederum so viele strings enthält, wie der Geheimschlüssel Buchstaben hat
+            char **strings = split_into_n_strings(mutable_text, counter, length);
+
+            if (strings == NULL)
+            {
+                return;
+            }
+
+            //erstellen eines arrays, indem die Verschiebewerte der Buchstaben im Geheimwort gespeichert werden koennen
+            int *shiftValues = malloc((counter * sizeof(int)));
+
+            if (shiftValues == NULL)
+            {
+                return;
+            }
+
+            for (int i = 0; i < counter; i++)
+            {
+                shiftValues[i] = frequencyAnalysis(strings[i]);
+            }
+
+            for (int i = 0; i < counter; i++)
+            {
+                free(strings[i]);
+            }
+            free(strings);
+
+            /*printf("\n");
+            for (int i = 0; i < key_Size; i++) {
+               printf("%d ", shiftValues[i]);
+            }
+            printf("\n");*/
+
+            secret_word = shift_values_to_word(shiftValues, counter);
+            free(shiftValues);
+            if (secret_word == NULL)
+            {
+                return;
+            }
+            //printf("\nGeheimwort ist: %s\n\n", secret_word);
+
+            decrypt_vignere(encrypted_text, secret_word, counter);
+
+            german_similarity = check_if_cracked(encrypted_text);
+            /*printf("counter: %d\n", counter);*/
+            counter++;
+        }while (german_similarity < 25 && german_similarity != -1 && counter <= 256);
+
+    }
     if (german_similarity == -1)
     {
         printf("\n\nCodebrechen konnte moeglicherweise nicht korrekt durchgefuehrt werden, da Datei mit den 1000 hauefigsten Woertern nicht geoeffnet werden konnte.\n");
         printf("\nDer entschluesselte Text koennte sein:\n%s\n", encrypted_text);
         printf("\nDas Geheimwort koennte sein: %s\n\n", secret_word);
-
-
     }
 
     if (german_similarity != -1)
@@ -130,6 +177,10 @@ void kasiski_test(const char *input_text)
         printf("Der entschluesselte Text ist:\n%s\n", encrypted_text);
     }
 
+    if (german_similarity < 25 && german_similarity != -1 && counter > 256)
+    {
+        printf("\nCodebrechen war nicht erfolgreich\n");
+    }
 
     free(secret_word);
 }
