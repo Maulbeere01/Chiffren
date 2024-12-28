@@ -8,44 +8,39 @@
 #include <math.h>
 #include "weighted_biggest_divisor.h"
 
-//Bestimmt die Schluessellaenge, indem der hauefigste und groesste vorkommende Teiler der Abstaende bestimmt wird.
-int find_key_length(const int *distances, const unsigned long int length)
+//Bestimmt die Schluessellaenge, indem der hauefigste und groesste vorkommende Teiler der Abstaende bestimmt wird. Die Groesse der Teiler wird positiv gewichtet, heisst ein grosser Teiler kann, obwohl er nicht am hauefigsten vorkommt bevorzugt werden.
+int find_key_length(const int *distances)
 {
-    int *smallestDivisors = NULL;
+    int *divisors = NULL;  // Array um alle Teiler der Abstaende, welche aus distances berechnet werden zu speichern
     int index = 0;
 
     printf("\nTeiler der Abstaende sind:\n");
     for (int i = 0; distances[i] != 0; i++)
     {
-        for (int j = 1; j < distances[i]; j++)
+        for (int j = 1; j < distances[i]; j++) // nested loop, fuer jeden Abstand werden alle Teiler gesucht
         {
-            if (distances[i] % j == 0)
+            if (distances[i] % j == 0) // Alle Teiler der Abstaende werden bestimmt
             {
-                smallestDivisors = realloc(smallestDivisors, (index + 1) * sizeof(int));
-                if (smallestDivisors == NULL)
+                divisors = realloc(divisors, (index + 1) * sizeof(int)); // bei jedem gefundenen Teiler wird das Array um 1 Wert vergroessert
+                if (divisors == NULL)
                 {
                     printf("Speicherzuweisung Fehler ini find_key_length");
                     return -1;
                 }
-                smallestDivisors[index] = j;
-                printf("%d ", smallestDivisors[index]);
-                index++; // hier den
+                divisors[index] = j; // Der gefundene Teiler wird in divisors gespeichert
+                printf("%d ", divisors[index]);
+                index++;
             }
         }
         printf("\n");
 
     }
-    smallestDivisors = realloc(smallestDivisors, (index + 1) * sizeof(int));
-    smallestDivisors[index] = 0;
+    divisors = realloc(divisors, (index + 1) * sizeof(int));
+    divisors[index] = 0;
 
-
-    // wir berrechnen den groessten, am hauefigst vorkommenden Teiler.
-    // Wir erstellen ein array von so vielen Plaetzen die wir braucen und zaehelen am passenden Index hoch wenn das element in den Teiler der Abstaende vorkommt.
-    // dann iterieren wir rueckwaerts durchs array und bestimmmen mit if( >= ) den am hauefigst vorkommenden groessten Teiler, bei Schluessellaenge 4 sollte die 4 so ueber der 2 ausgewaehlt werden.
-    // trotzdem kann failen, da ein Abstand nicht durch Schluessellaenge teilbar aber durch 2 ==> 2 gibt es mehr als 4
-
-
-    return find_largest_divisor_weighted(smallestDivisors, length);
+    const unsigned long int length = index;
+    /*printf("length smallest Divisors is: %d\n", length);*/
+    return find_largest_divisor_weighted(divisors, length);
 
 
 

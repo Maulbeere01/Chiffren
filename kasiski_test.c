@@ -39,7 +39,7 @@ void kasiski_test(const char *input_text)
         return;
     }
 
-    int key_length = find_key_length(distances, length);
+    int key_length = find_key_length(distances);
     free(distances);
     if (key_length == -1)
     {

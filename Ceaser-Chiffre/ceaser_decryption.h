@@ -4,5 +4,5 @@
 
 #ifndef DECRYPTION_H
 #define DECRYPTION_H
-void CaeserChiffreDecryption(char *text, int decryptedShiftValue);
+void caeser_chiffre_decryption(char *text, int decryptedShiftValue);
 #endif //DECRYPTION_H
