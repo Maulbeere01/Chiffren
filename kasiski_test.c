@@ -79,4 +79,6 @@ void kasiski_test(char *input_text, const char *letter_only, const unsigned long
 
     decrypt_vignere(input_text, secret_key, key_length);
     free(secret_key);
+    printf("\nDer mit Kasiski entschluesselte Text ist: \n%s\n\n", input_text);
+
 }

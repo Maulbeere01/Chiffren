@@ -81,6 +81,7 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
     if (german_similarity >= 25)
     {
         strcpy(input_text, tmp_text);
+        printf("german_similarity: %.2f\n", german_similarity);
     }
     return german_similarity;
 }
