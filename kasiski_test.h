@@ -5,5 +5,5 @@
 #ifndef KASISKI_TEST_H
 #define KASISKI_TEST_H
 
-void kasiski_test(char *text);
+void kasiski_test(char *input_text, const char *letter_only, const unsigned long int len_letters_only);
 #endif //KASISKI_TEST_H

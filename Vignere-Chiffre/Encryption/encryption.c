@@ -27,7 +27,8 @@ void VigenereEncryption(char *text, char *secretKey)
             // Der Text wird verschluesselt, indem jeder Buchstabe im Text um den Buchstaben im Schluessel verschoben wird. Ist das Ende des Schluessels erreicht, beginnt man wieder am Anfang des Schluessels, dieser wird also immer wieder verwendet
             text[i] = (text[i] - 'a' + (tempSecretKey[keyIndex % lengthSecretKey] - 'a')) % 26 + 'a';
             keyIndex++;
-        } else if (text[i] >= 'A' && text[i] <= 'Z')
+        }
+        else if (text[i] >= 'A' && text[i] <= 'Z')
         {
             text[i] = (text[i] - 'A' + (tempSecretKey[keyIndex % lengthSecretKey] - 'a')) % 26 + 'A';
             keyIndex++;

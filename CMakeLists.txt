@@ -29,6 +29,8 @@ add_executable(untitled2 main.c
         check_if_cracked.c
         check_if_cracked.h
         weighted_biggest_divisor.c
-        weighted_biggest_divisor.h)
+        weighted_biggest_divisor.h
+        brute_force.c
+        brute_force.h)
 
 target_link_libraries(untitled2 m)
