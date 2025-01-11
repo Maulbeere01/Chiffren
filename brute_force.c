@@ -65,7 +65,7 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
 
         decrypt_vignere(tmp_text, secret_key, key_length);
 
-        german_similarity = check_if_cracked(tmp_text);
+        german_similarity = get_word_match_percentage(tmp_text);
         printf("Bei Schlüssellänge %d ist german_similarity bei %f\n\n", key_length, german_similarity);
         if (german_similarity >= 25)
         {

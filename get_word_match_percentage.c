@@ -78,18 +78,6 @@ void create_hash_table()
 }
 
 //----------------------------------------------------------------------------
-int word_count(const char *string)
-{
-    int whitespace_count = 0;
-    for (int i = 0; string[i] != '\0'; i++)
-    {
-        if (string[i] == ' ' && string[i - 1] != ' ')
-        {
-            whitespace_count++;
-        }
-    }
-    return whitespace_count;
-}
 
 void print_hash_table()
 {

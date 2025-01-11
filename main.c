@@ -58,7 +58,7 @@ int main()
 
     kasiski_test(input_text, letters_only, len_letters_only);
 
-    float german_similarity = check_if_cracked(input_text);
+    float german_similarity = get_word_match_percentage(input_text);
     printf("german_similarity: %.2f\n", german_similarity);
 
     //printf("\nDer entschlüsselte Text besteht zu %.2f Prozent aus den 1000 häufigst genutzten Wörter der deutschen Sprache \n", german_similarity);
