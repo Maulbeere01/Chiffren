@@ -1,8 +1,6 @@
 //
 // Created by benwe on 10.01.2025.
 //
-
-#include "get_word_match_percentage.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
