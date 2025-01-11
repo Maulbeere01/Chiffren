@@ -10,7 +10,8 @@ char *shift_values_to_word(const int *shiftValues, int key_size)
     if (secret_word == NULL)
     {
         printf("\nFehlerhafte Speicheranfrage in shift_values_to_word\n");
-        return NULL;
+        free(secret_word);
+        exit(-1);
     }
     int j = 0;
     for (int i = 0; i < key_size; i++)

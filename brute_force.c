@@ -5,13 +5,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "check_if_cracked.h"
+#include "get_word_match_percentage.h"
 #include "frequency_analysis.h"
 #include "shift_values_to_word.h"
 #include "split_into_n_strings.h"
 #include "Vignere-Chiffre/Decryption/decryption.h"
 
-// Startet bei Schluessellaenge 1 und probiert alle moeglichen Laengen bis 256 aus
+// Startet bei Schlüssellänge 1 und probiert alle möglichen Längen bis 256 aus
 float brute_force(char *input_text, float german_similarity, unsigned long long int len_input_text,
                   const char *letter_only, const unsigned long int len_letters_only)
 {
@@ -30,7 +30,7 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
             return -1;
         }
 
-        //erstellen eines arrays, indem die Verschiebewerte der Buchstaben im Geheimwort gespeichert werden koennen
+        //erstellen eines arrays, indem die Verschiebe Werte der Buchstaben im Geheimwort gespeichert werden können
         int *shift_values = malloc((key_length * sizeof(int)));
 
         if (shift_values == NULL)
@@ -66,10 +66,10 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
         decrypt_vignere(tmp_text, secret_key, key_length);
 
         german_similarity = check_if_cracked(tmp_text);
-
+        printf("Bei Schlüssellänge %d ist german_similarity bei %f\n\n", key_length, german_similarity);
         if (german_similarity >= 25)
         {
-            printf("\n Geheim Schluessel ist %s \n", secret_key);
+            printf("\nGeheim Schlüssel ist %s \n", secret_key);
         }
 
         free(secret_key);
