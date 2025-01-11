@@ -49,14 +49,12 @@ void add_node(const char *word)
         printf("Fehler Speicherzuweisung in hash_map_check_if_cracked");
         exit(1);
     }
-
     strcpy(new_node->word, word);
     new_node->next = hash_table[index];
     // Ist der Index leer, zeigt next jetzt auf NULL, ist schon ein Element im bucket, dann zeigt next jetzt auf dieses
     hash_table[index] = new_node;
     // am index steht jetzt der neue Knoten und der next Zeiger zeigt auf NULL oder das nächste Element (was der vorherige Knoten an dem Index war), wir haben am Index der Kollision eine Liste erstellt
 }
-
 
 void create_hash_table()
 {
@@ -76,8 +74,6 @@ void create_hash_table()
     }
     /*print_hash_table();*/
 }
-
-//----------------------------------------------------------------------------
 
 void print_hash_table()
 {
@@ -104,7 +100,6 @@ void print_hash_table()
             max_length = length_node;
         }
     }
-
     printf("Maximale Listenlänge: %d\n", max_length);
     printf("Gesamtanzahl der Kollisionen: %d\n", collisions);
 
