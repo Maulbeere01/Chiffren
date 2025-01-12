@@ -5,7 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define SIZE 30000
+#define SIZE 49999
+// 0 für hash table existiert nicht und muss erstellt werden und 1 für hash table schon erstellt, ansonsten wird bei der Brute-Force-Methode für jede Schlüssellänge die gleiche hashtable neu erstellt werden.
+int is_hash_table_created = 0;
 
 typedef struct node {
     char *word;
@@ -38,14 +40,14 @@ void add_node(const char *word)
     if (new_node == NULL)
     {
         printf("Fehler Speicherzuweisung in hash_map_check_if_cracked");
-        exit(1);
+        exit(-1);
     }
 
     new_node->word = malloc(strlen(word) + 1);
     if (new_node->word == NULL)
     {
         printf("Fehler Speicherzuweisung in hash_map_check_if_cracked");
-        exit(1);
+        exit(-1);
     }
     strcpy(new_node->word, word);
     new_node->next = hash_table[index];
@@ -56,12 +58,17 @@ void add_node(const char *word)
 
 void create_hash_table()
 {
+    for (int i = 0; i < SIZE; i++)
+    {
+        hash_table[i] = NULL;
+    }
+
     FILE *file = fopen("words.txt", "r");
 
     if (file == NULL)
     {
         printf("Wörterbuch konnte nicht geöffnet werden");
-        exit(1);
+        exit(-1);
     }
 
     char word[30];
@@ -70,6 +77,7 @@ void create_hash_table()
     {
         add_node(word);
     }
+    is_hash_table_created = 1;
     /*print_hash_table();*/
 }
 
@@ -117,12 +125,38 @@ void print_hash_table()
         }
     }
 }
+
+void free_hash_table()
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        node *current_node = hash_table[i];
+
+        while (current_node != NULL)
+        {
+            node *next_node = current_node->next;
+            if (current_node->word != NULL)
+            {
+                /*printf("%s erfolgreich gelöscht   ", current_node->word);*/
+                free(current_node->word);
+            }
+            free(current_node);
+            current_node = next_node;
+        }
+        /*printf("%d erfolgreich gelöscht\n", i);*/
+    }
+}
+
 // bestimmt wie viele Übereinstimmungen der übergebene Text hat mit ca. 10.000 Wörtern der deutschen Sprache hat und gibt den prozentual Anteil zurück. Die Funktion benutzt dabei eine hash table um einen Zugriff auf die Daten in O(1) zu haben
 float get_word_match_percentage(const char *text)
 {
-    create_hash_table();
-    /*print_hash_table();*/
-    int counter = 0; // zählt die Treffer in der Hashtabelle
+    if (is_hash_table_created != 1)
+    {
+        create_hash_table();
+        /*print_hash_table();*/
+    }
+
+    int matches = 0; // zählt die Treffer in der Hashtabelle
     int word_count = 0; // zählt die Anzahl wörter in unserem Text, um später den prozentualen Anteil zu bestimmen
     unsigned int index = 0; // wir suchen nach dem Wort in der Hashtable
     node *current_node = NULL;
@@ -145,7 +179,7 @@ float get_word_match_percentage(const char *text)
             {
                 if (strcasecmp(word, current_node->word) == 0)
                 {
-                    counter++;
+                    matches++;
                     /*printf("wort: \"%s\" gefunden in der hashtable an Index %d\n", word, index);*/
                     break;
                 }
@@ -154,5 +188,12 @@ float get_word_match_percentage(const char *text)
             j = 0;
         }
     }
-    return (float) counter / (float) word_count * 100;
+
+    float german_similarity = (float) matches / (float) word_count * 100;
+    if (german_similarity > 25)
+    {
+        free_hash_table();
+        is_hash_table_created = 0;
+    }
+    return german_similarity;
 }
