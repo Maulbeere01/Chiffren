@@ -4,20 +4,20 @@
 
 #include <stdio.h>
 #include <string.h>
-// Entschluesselt Vigenere, indem mit dem Verschluesselwort, jeder Buchstabe im Geheimtext nach links verschoben wird
-void decrypt_vignere(char *text, char *secret_key, int key_size)
+// Entschlüsselt Vigenere, indem mit dem Verschlüsselwort, jeder Buchstabe im Geheimtext nach links verschoben wird
+void decrypt_vignere(char *text, const char *secret_key, const int key_size)
 {
     int keyIndex = 0;
     for (int i = 0; text[i] != '\0'; i++)
     {
         if (text[i] >= 'a' && text[i] <= 'z')
         {
-            text[i] = (text[i] - 'a' - (secret_key[keyIndex % key_size] - 'a') + 26) % 26 + 'a';
+            text[i] = (char)((text[i] - 'a' - (secret_key[keyIndex % key_size] - 'a') + 26) % 26 + 'a');
             keyIndex++;
         }
         else if (text[i] >= 'A' && text[i] <= 'Z')
         {
-            text[i] = (text[i] - 'A' - (secret_key[keyIndex % key_size] - 'a') + 26) % 26 + 'A';
+            text[i] = (char)((text[i] - 'A' - (secret_key[keyIndex % key_size] - 'a') + 26) % 26 + 'A');
             keyIndex++;
         }
     }

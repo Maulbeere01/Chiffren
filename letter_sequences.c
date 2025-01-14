@@ -29,7 +29,7 @@ int *find_triplets(const char *text, const unsigned long int length)
                 if (distances == NULL)
                 {
                     printf("\nSpeicheranfrage in find_letter_sequences fehlgeschlagen\n");
-                    return NULL;
+                    exit(-1);
                 }
 
                 distances[index] = j - i;
@@ -45,7 +45,7 @@ int *find_triplets(const char *text, const unsigned long int length)
     if (distances == NULL)
     {
         printf("\nSpeicheranfrage in find_letter_sequences fehlgeschlagen\n");
-        return NULL;
+        exit(-1);
     }
     distances[index] = 0;
 

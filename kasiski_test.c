@@ -16,6 +16,7 @@ void kasiski_test(char *input_text, const char *letter_only, const unsigned long
 
     if (triplet_distances == NULL)
     {
+        free(triplet_distances);
         exit(-1);
     }
 
@@ -74,6 +75,7 @@ void kasiski_test(char *input_text, const char *letter_only, const unsigned long
     printf("\nGeheimwort ist: %s\n", secret_key);
 
     decrypt_vignere(input_text, secret_key, key_length);
+
     free(secret_key);
     /*printf("\nDer mit Kasiski entschlüsselte Text ist: \n%s\n\n", input_text);*/
 }

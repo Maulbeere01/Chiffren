@@ -13,24 +13,23 @@
 void VigenereEncryption(char *text, char *secretKey)
 {
     const char *tempSecretKey = str_lower(secretKey);
-    const int lengthSecretKey = strlen(tempSecretKey);
+    const unsigned int lengthSecretKey = strlen(tempSecretKey);
+    int keyIndex = 0;
 
     //printf("\nLength of key is %d\n", lengthSecretKey);
     //printf("\nOriginal Text: %s\n", text);
-
-    int keyIndex = 0;
 
     for (int i = 0; text[i] != '\0'; i++)
     {
         if (text[i] >= 'a' && text[i] <= 'z')
         {
-            // Der Text wird verschluesselt, indem jeder Buchstabe im Text um den Buchstaben im Schluessel verschoben wird. Ist das Ende des Schluessels erreicht, beginnt man wieder am Anfang des Schluessels, dieser wird also immer wieder verwendet
-            text[i] = (text[i] - 'a' + (tempSecretKey[keyIndex % lengthSecretKey] - 'a')) % 26 + 'a';
+            // Der Text wird verschlüsselt, indem jeder Buchstabe im Text um den Buchstaben im Schlüssel verschoben wird. Ist das Ende des Schluessels erreicht, beginnt man wieder am Anfang des Schluessels, dieser wird also immer wieder verwendet
+            text[i] =(char)( (text[i] - 'a' + (tempSecretKey[keyIndex % lengthSecretKey] - 'a')) % 26 + 'a');
             keyIndex++;
         }
         else if (text[i] >= 'A' && text[i] <= 'Z')
         {
-            text[i] = (text[i] - 'A' + (tempSecretKey[keyIndex % lengthSecretKey] - 'a')) % 26 + 'A';
+            text[i] = (char)((text[i] - 'A' + (tempSecretKey[keyIndex % lengthSecretKey] - 'a')) % 26 + 'A');
             keyIndex++;
         }
     }

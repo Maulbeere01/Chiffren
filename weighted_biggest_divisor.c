@@ -48,7 +48,7 @@ int find_largest_divisor_weighted(const int *count_array, const unsigned long in
         number_of_elements[i] = number_of_elements[i] * sqrt(i);
         /*printf("%d:%.0lf  ", i, number_of_elements[i]);*/
     }
-    int max = find_biggest_element(number_of_elements);
+    const int max = find_biggest_element(number_of_elements);
     printf("\nmax is(key length): %d", max);
 
     return max;

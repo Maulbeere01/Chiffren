@@ -11,7 +11,7 @@ char **split_into_n_strings(const char *text, const int n, const unsigned long i
     if (strings == NULL)
     {
         printf("speicherzuweisung Fehler\n");
-        return NULL;
+        exit(-1);
     }
 
     //wir allokieren strings mit passender Größe und speichern sie in dem array strings
@@ -25,7 +25,7 @@ char **split_into_n_strings(const char *text, const int n, const unsigned long i
         if (strings[i] == NULL)
         {
             printf("speicherzuweisung Fehler\n");
-            return NULL;
+            exit(-1);
         }
     }
     // initialisieren der strings, jeweils nur die Buchstaben in einem String, welche mit dem gleichen Buchstaben verschoben wurden

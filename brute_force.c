@@ -27,7 +27,7 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
 
         if (sub_strings == NULL)
         {
-            return -1;
+            exit(-1);
         }
 
         //erstellen eines arrays, indem die Verschiebe Werte der Buchstaben im Geheimwort gespeichert werden können
@@ -35,7 +35,7 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
 
         if (shift_values == NULL)
         {
-            return -1;
+            exit(-1);
         }
 
         for (int i = 0; i < key_length; i++)
@@ -60,7 +60,7 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
         free(shift_values);
         if (secret_key == NULL)
         {
-            return -1;
+            exit(-1);
         }
 
         decrypt_vignere(tmp_text, secret_key, key_length);

@@ -137,7 +137,7 @@ void free_hash_table()
             node *next_node = current_node->next;
             if (current_node->word != NULL)
             {
-                /*printf("%s erfolgreich gelöscht   ", current_node->word);*/
+                /*printf("%s erfolgreich gelöscht\n", current_node->word);*/
                 free(current_node->word);
             }
             free(current_node);
@@ -189,7 +189,7 @@ float get_word_match_percentage(const char *text)
         }
     }
 
-    float german_similarity = (float) matches / (float) word_count * 100;
+    const float german_similarity = (float) matches / (float) word_count * 100;
     if (german_similarity > 25)
     {
         free_hash_table();
