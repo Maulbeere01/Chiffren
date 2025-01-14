@@ -32,6 +32,8 @@ add_executable(untitled2 main.c
         brute_force.h
         get_word_match_percentage.c
         get_word_match_percentage.h
+        encrypt_cäser.c
+        encrypt_cäser.h
 )
 
 target_link_libraries(untitled2 m)
