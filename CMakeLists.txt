@@ -4,12 +4,12 @@ project(untitled2 C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(untitled2 main.c
-        Ceaser-Chiffre/encryption_ceaser.c
+        Ceaser-Chiffre/c_encryption.c
         frequency_analysis.c
-        Ceaser-Chiffre/encryption_ceaser.h
+        Ceaser-Chiffre/c_encryption.h
         frequency_analysis.h
-        Ceaser-Chiffre/ceaser_decryption.c
-        Ceaser-Chiffre/ceaser_decryption.h
+        Ceaser-Chiffre/c_decryption.c
+        Ceaser-Chiffre/c_decryption.h
         Vignere-Chiffre/Encryption/encryption.c
         Vignere-Chiffre/Encryption/encryption.h
         kasiski_test.c
@@ -34,6 +34,12 @@ add_executable(untitled2 main.c
         get_word_match_percentage.h
         encrypt_cäser.c
         encrypt_cäser.h
+        decrypt_cäsar.c
+        decrypt_cäsar.h
+        break_cäsar.c
+        break_cäsar.h
+        encrypt_vigenere.c
+        encrypt_vigenere.h
 )
 
 target_link_libraries(untitled2 m)

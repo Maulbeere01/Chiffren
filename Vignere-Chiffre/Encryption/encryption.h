@@ -5,5 +5,5 @@
 #ifndef VIGNEREENCRYPTION_H
 #define VIGNEREENCRYPTION_H
 
-void VigenereEncryption(char *text, char *secretKey);
+void vigenere_encryption(char *text, char *secretKey);
 #endif //VIGNEREENCRYPTION_H

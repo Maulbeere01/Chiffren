@@ -10,7 +10,7 @@
 // Die Verschlüsselung wird mit zunehmender Länge des Schlüssels und abnehmender Länge des Textes schwieriger zu knacken
 
 
-void VigenereEncryption(char *text, char *secretKey)
+void vigenere_encryption(char *text, char *secretKey)
 {
     const char *tempSecretKey = str_lower(secretKey);
     const unsigned int lengthSecretKey = strlen(tempSecretKey);

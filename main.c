@@ -1,17 +1,21 @@
 #include <stdio.h>
 #include <string.h>
-#include "Ceaser-Chiffre/encryption_ceaser.h"
+#include "Ceaser-Chiffre/c_encryption.h"
 #include "Vignere-Chiffre/Encryption/encryption.h"
 #include "frequency_analysis.h"
-#include "Ceaser-Chiffre/ceaser_decryption.h"
+#include "Ceaser-Chiffre/c_decryption.h"
 #include "kasiski_test.h"
 #include <math.h>
 #include <stdlib.h>
 #include "encrypt_cäser.h"
+#include "decrypt_cäsar.h"
 #include "brute_force.h"
 #include "string_operations.h"
 #include "get_word_match_percentage.h"
 #include <windows.h>
+
+#include "break_cäsar.h"
+#include "encrypt_vigenere.h"
 
 
 int main()
@@ -37,7 +41,7 @@ int main()
         encryption_method = atoi(input);
     }
 
-    printf("Wähle zwischen [1]Verschlüsselung, [1]Entschlüsselung oder [3]Brechen:");
+    printf("Wähle zwischen [1]Verschlüsselung, [2]Entschlüsselung oder [3]Brechen:");
     fgets(input, 250, stdin);
 
     mode = atoi(input);
@@ -53,6 +57,21 @@ int main()
     if (encryption_method == 1 && mode == 1)
     {
         encrypt_cäsar();
+    }
+
+    if (encryption_method == 1 && mode == 2)
+    {
+        decrypt_cäsar();
+    }
+
+    if (encryption_method == 1 && mode == 3)
+    {
+        break_cäsar();
+    }
+
+    if (encryption_method == 2 && mode == 1)
+    {
+        encrypt_vigenere();
     }
 
 
