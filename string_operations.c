@@ -7,6 +7,7 @@ char *str_lower(char *string)
 {
     for (int i = 0; string[i] != '\0'; i++)
     {
+        if(string[i] >= 'A' && string[i] <= 'Z')
         string[i] = (char)(tolower(string[i]));
     }
     return string;

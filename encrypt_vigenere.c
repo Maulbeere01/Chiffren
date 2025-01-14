@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "string_operations.h"
+#include "string_operations.h"
 #include "Vignere-Chiffre/Encryption/encryption.h"
 int is_key_valid(char *key)
 {
@@ -31,7 +33,7 @@ void encrypt_vigenere()
     {
         printf("Gebe zunächst dein Geheimwort ein, mit dem der Text verschlüsselt werden soll, es sind nur Buchstaben erlaubt, keine Sonderzeichen:\n");
         fgets(key, 256, stdin);
-        strlwr(key);
+        str_lower(key);
         int len_key = strlen(key);
         if (len_key > 0 && key[len_key - 1] == '\n') {
             key[len_key - 1] = '\0';
@@ -62,14 +64,12 @@ void encrypt_vigenere()
     vigenere_encryption(vigenere_text, key);
     printf("Der verschlüsselte Text ist:\n%s", vigenere_text);
 
-    printf("\nWillst du den Text in der encrypted.txt Datei speichern? [Y/N]\n");
     char user_choice = 'x';
-    scanf("%1c", &user_choice);
-    user_choice = (char)tolower(user_choice);
     while (user_choice != 'y' && user_choice != 'n')
     {
-        printf("Nutze Y für Ja oder N für Nein\n");
+        printf("\nWillst du den Text in der encrypted.txt Datei speichern? [Y/N]\n");
         scanf("%1c", &user_choice);
+        fflush(stdin);
         user_choice = (char)tolower(user_choice);
     }
 
@@ -84,5 +84,9 @@ void encrypt_vigenere()
         fprintf(output_file, "%s", vigenere_text);
         printf("Der verschlüsselte Text wurde in encrypted.txt gespeichert.\n");
         fclose(output_file);
+    }
+    else
+    {
+        printf("Der verschlüsselte Text wurde NICHT in encrypted.txt gespeichert.\n");
     }
 }
