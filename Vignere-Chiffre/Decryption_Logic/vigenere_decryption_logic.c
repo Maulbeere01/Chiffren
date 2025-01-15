@@ -12,12 +12,12 @@ void vigenere_decryption_logic(char *text, const char *secret_key, const int key
     {
         if (text[i] >= 'a' && text[i] <= 'z')
         {
-            text[i] = (char)((text[i] - 'a' - (secret_key[keyIndex % key_size] - 'a') + 26) % 26 + 'a');
+            text[i] = (char) ((text[i] - 'a' - (secret_key[keyIndex % key_size] - 'a') + 26) % 26 + 'a');
             keyIndex++;
         }
         else if (text[i] >= 'A' && text[i] <= 'Z')
         {
-            text[i] = (char)((text[i] - 'A' - (secret_key[keyIndex % key_size] - 'a') + 26) % 26 + 'A');
+            text[i] = (char) ((text[i] - 'A' - (secret_key[keyIndex % key_size] - 'a') + 26) % 26 + 'A');
             keyIndex++;
         }
     }

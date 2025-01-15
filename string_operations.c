@@ -7,25 +7,25 @@ char *str_lower(char *string)
 {
     for (int i = 0; string[i] != '\0'; i++)
     {
-        if(string[i] >= 'A' && string[i] <= 'Z')
-        string[i] = (char)(tolower(string[i]));
+        if (string[i] >= 'A' && string[i] <= 'Z')
+            string[i] = (char) (tolower(string[i]));
     }
     return string;
 }
 
 // entfernt alle Zeichen ausser a bis z, auch leerzeichen, etc.
-char *extract_letters(char *text)
+char *extract_letters(char *string)
 {
-    for (int i = 0; text[i] != '\0'; i++)
+    for (int i = 0; string[i] != '\0'; i++)
     {
-        if (text[i] < 'a' || text[i] > 'z')
+        if (string[i] < 'a' || string[i] > 'z')
         {
-            for (int j = i; text[j] != '\0'; j++)
+            for (int j = i; string[j] != '\0'; j++)
             {
-                text[j] = text[j + 1];
+                string[j] = string[j + 1];
             }
             i--;
         }
     }
-    return text;
+    return string;
 }

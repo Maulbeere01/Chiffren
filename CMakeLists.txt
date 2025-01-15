@@ -46,8 +46,6 @@ add_executable(untitled2 main.c
         User_Interaction/encrypt_vigenere.h
         User_Interaction/user_interaction.c
         User_Interaction/user_interaction.h
-
-
 )
 
 target_link_libraries(untitled2 m)
