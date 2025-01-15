@@ -5,9 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../Break_Vigenere/brute_force.h"
-#include "../Break_Vigenere/get_word_match_percentage.h"
-#include "../Break_Vigenere/Kasiski-Test/kasiski_test.h"
+#include "../Break-Vigenere/brute_force.h"
+#include "../Break-Vigenere/get_word_match_percentage.h"
+#include "../Break-Vigenere/Kasiski-Test/kasiski_test.h"
 #include "../string_operations.h"
 #include "user_interaction.h"
 

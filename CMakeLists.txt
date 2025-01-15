@@ -16,36 +16,36 @@ add_executable(untitled2 main.c
         string_operations.h
         Vignere-Chiffre/Decryption_Logic/vigenere_decryption_logic.c
         Vignere-Chiffre/Decryption_Logic/vigenere_decryption_logic.h
-        Break_Vigenere/Kasiski-Test/kasiski_test.c
-        Break_Vigenere/Kasiski-Test/kasiski_test.h
-        Break_Vigenere/Kasiski-Test/split_into_n_strings.c
-        Break_Vigenere/Kasiski-Test/split_into_n_strings.h
-        Break_Vigenere/Kasiski-Test/shift_values_to_word.h
-        Break_Vigenere/Kasiski-Test/shift_values_to_word.c
-        Break_Vigenere/get_word_match_percentage.c
-        Break_Vigenere/get_word_match_percentage.h
-        Break_Vigenere/brute_force.c
-        Break_Vigenere/brute_force.h
-        Break_Vigenere/Kasiski-Test/find_triplets.c
-        Break_Vigenere/Kasiski-Test/find_triplets.h
-        Break_Vigenere/Kasiski-Test/find_key_length.c
-        Break_Vigenere/Kasiski-Test/find_key_length.h
-        Break_Vigenere/Kasiski-Test/weighted_biggest_divisor.c
-        Break_Vigenere/Kasiski-Test/weighted_biggest_divisor.h
-        User_Interaction/break_caesar.c
-        User_Interaction/break_caesar.h
-        User_Interaction/break_vigenere.c
-        User_Interaction/break_vigenere.h
-        User_Interaction/decrypt_caesar.c
-        User_Interaction/decrypt_caesar.h
-        User_Interaction/decrypt_vigenere.c
-        User_Interaction/decrypt_vigenere.h
-        User_Interaction/encrypt_caeser.h
-        User_Interaction/encrypt_caeser.c
-        User_Interaction/encrypt_vigenere.c
-        User_Interaction/encrypt_vigenere.h
-        User_Interaction/user_interaction.c
-        User_Interaction/user_interaction.h
+        Break-Vigenere/Kasiski-Test/kasiski_test.c
+        Break-Vigenere/Kasiski-Test/kasiski_test.h
+        Break-Vigenere/Kasiski-Test/split_into_n_strings.c
+        Break-Vigenere/Kasiski-Test/split_into_n_strings.h
+        Break-Vigenere/Kasiski-Test/shift_values_to_word.h
+        Break-Vigenere/Kasiski-Test/shift_values_to_word.c
+        Break-Vigenere/get_word_match_percentage.c
+        Break-Vigenere/get_word_match_percentage.h
+        Break-Vigenere/brute_force.c
+        Break-Vigenere/brute_force.h
+        Break-Vigenere/Kasiski-Test/find_triplets.c
+        Break-Vigenere/Kasiski-Test/find_triplets.h
+        Break-Vigenere/Kasiski-Test/find_key_length.c
+        Break-Vigenere/Kasiski-Test/find_key_length.h
+        Break-Vigenere/Kasiski-Test/weighted_biggest_divisor.c
+        Break-Vigenere/Kasiski-Test/weighted_biggest_divisor.h
+        User-Interaction/break_caesar.c
+        User-Interaction/break_caesar.h
+        User-Interaction/break_vigenere.c
+        User-Interaction/break_vigenere.h
+        User-Interaction/decrypt_caesar.c
+        User-Interaction/decrypt_caesar.h
+        User-Interaction/decrypt_vigenere.c
+        User-Interaction/decrypt_vigenere.h
+        User-Interaction/encrypt_caeser.h
+        User-Interaction/encrypt_caeser.c
+        User-Interaction/encrypt_vigenere.c
+        User-Interaction/encrypt_vigenere.h
+        User-Interaction/user_interaction.c
+        User-Interaction/user_interaction.h
 )
 
 target_link_libraries(untitled2 m)

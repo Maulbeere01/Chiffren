@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "User_Interaction/encrypt_caeser.h"
+#include "User-Interaction/encrypt_caeser.h"
 #include <windows.h>
-#include "User_Interaction/break_caesar.h"
-#include "User_Interaction/decrypt_vigenere.h"
-#include "User_Interaction/encrypt_vigenere.h"
-#include "User_Interaction/break_vigenere.h"
-#include "User_Interaction/user_interaction.h"
-#include "User_Interaction/decrypt_caesar.h"
+#include "User-Interaction/break_caesar.h"
+#include "User-Interaction/decrypt_vigenere.h"
+#include "User-Interaction/encrypt_vigenere.h"
+#include "User-Interaction/break_vigenere.h"
+#include "User-Interaction/user_interaction.h"
+#include "User-Interaction/decrypt_caesar.h"
 
 
 int main()
