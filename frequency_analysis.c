@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 // Wir bestimmen die Verteilung der Häufigkeit jedes Buchstabens im Geheimtext. Diese Verteilung vergleichen wir mit der Häufigkeitsverteilung der Buchstaben in der deutschen Sprache. Wir verschieben dafür unsere Häufigkeitsverteilung 26-mal und bestimmen, wo die Abweichung von der Standardverteilung der deutschen Sprache am geringsten ist
-int frequencyAnalysis(const char *text)
+int frequency_analysis(const char *text)
 {
     // Array um die Häufigkeit jedes Buchstaben zu zählen, index 0 steht für a, index 1 steht für b, etc.
     double letter_count[26] = {0};
@@ -10,21 +10,19 @@ int frequencyAnalysis(const char *text)
         letter_count[i] = 0;
     }
 
-    // Wir zahlen fur jeden Buchstaben die complementary Stelle im letter-count Array hoch
     for (int i = 0; text[i] != 0; i++)
     {
         if (text[i] >= 'a' && text[i] <= 'z')
         {
-            letter_count[text[i] - 'a'] += 1;
+            letter_count[text[i] - 'a']++;
         }
 
         if (text[i] >= 'A' && text[i] <= 'Z')
         {
-            letter_count[text[i] - 'A'] += 1;
+            letter_count[text[i] - 'A']++;
         }
     }
 
-    // wir zählen wie viele Buchstaben in letter_count gezählt wurden
     double size_letter_count = 0;
     for (int i = 0; i < 26; i++)
     {
@@ -76,28 +74,4 @@ int frequencyAnalysis(const char *text)
     /*printf("\nshift value: %d", index_smallest);*/
 
     return index_smallest;
-
-    /*
-    //
-    int highest = 0;
-    int index = 0;
-    // Findet den am häufigsten vorkommenden Buchstaben und speichert den Index (Index 0 = häufigster Buchstabe ist a, Index 1 = häufigster Buchstabe ist b, etc.)
-    for (int i = 0; i < 26; i++)
-    {
-        if (letterCount[i] > highest)
-        {
-            highest = letterCount[i];
-            index = i;
-        }
-    }
-
-    //printf("Der meist auftauchende Buchstabe im geheim Text ist: %c\n", index + 'a');
-
-    // bestimmt aus dem häufigst vorkommenden Buchstaben den Verschiebe Wert, mithilfe des in der deutschen Sprache am häufigst genutzten Buchstaben 'e'.
-    int decryptedShiftValue = (index - ('e' - 'a') + 26) % 26;
-    // // +26, da für häufigster buchstaben a bis d für -(e - a(4)) negative Werte herauskommen; -4 + 26 = Verschiebung um 22. Und mod 26, da Werte größer null dann z.b. 3 + 26 = 29 mod 26 = 3 wieder werden.
-
-    //printf("Die Buchstaben wurden um %d verschoben.\n\n", decryptedShiftValue);
-
-    return decryptedShiftValue;*/
 }

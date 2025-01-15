@@ -1,5 +1,5 @@
 #ifndef HÄUFIGKEITSANALYSE_H
 #define HÄUFIGKEITSANALYSE_H
 
-int frequencyAnalysis(const char *text);
+int frequency_analysis(const char *text);
 #endif //HÄUFIGKEITSANALYSE_H

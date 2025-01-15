@@ -50,7 +50,7 @@ void kasiski_test(char *input_text, const char *letter_only, const unsigned long
 
     for (int i = 0; i < key_length; i++)
     {
-        shift_values[i] = frequencyAnalysis(sub_strings[i]);
+        shift_values[i] = frequency_analysis(sub_strings[i]);
     }
 
     for (int i = 0; i < key_length; i++)

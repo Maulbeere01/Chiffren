@@ -39,7 +39,7 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
 
         for (int i = 0; i < key_length; i++)
         {
-            shift_values[i] = frequencyAnalysis(sub_strings[i]);
+            shift_values[i] = frequency_analysis(sub_strings[i]);
         }
 
         for (int i = 0; i < key_length; i++)

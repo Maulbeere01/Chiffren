@@ -18,7 +18,7 @@ void break_cäsar()
 
     printf("\nDer verschlüsselte Text ist\n\n%s", cäsar_text);
 
-    const int decrypted_shift_value = frequencyAnalysis(cäsar_text);
+    const int decrypted_shift_value = frequency_analysis(cäsar_text);
     caeser_decryption_logic(cäsar_text, decrypted_shift_value);
     printf("\n\n\nDer entschlüsselte Text ist:\n\n%s\n\n", cäsar_text);
     printf("\nDie Buchstaben waren um %d verschoben\n", decrypted_shift_value);
