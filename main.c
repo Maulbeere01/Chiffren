@@ -12,8 +12,7 @@
 
 int main()
 {
-    SetConsoleOutputCP(65001);
-    // damit Umlaute in der Konsole korrekt dargestellt werden: https://www.ndoors.de/wp-content/uploads/2017/10/Umlaute_in_C.pdf
+    SetConsoleOutputCP(65001); // damit Umlaute in der Konsole korrekt dargestellt werden: https://www.ndoors.de/wp-content/uploads/2017/10/Umlaute_in_C.pdf
     SetConsoleCP(65001);
 while(1){
     char input[256];
@@ -33,14 +32,14 @@ while(1){
         encryption_method = atoi(input);
     }
 
-    printf("Wähle zwischen [1] Verschlüsselung, [2] Entschlüsselung oder [3] Brechen:");
+    printf("Wähle zwischen [1] Verschlüsselung, [2] Entschlüsselung oder [3] Brechen:\n");
     fgets(input, 250, stdin);
     fflush(stdin);
     mode = atoi(input);
 
     while (mode != 1 && mode != 2 && mode != 3)
     {
-        printf("Eingabefehler, wähle zwischen[1] Verschlüsselung, [2] Entschlüsselung oder [3] Brechen:");
+        printf("Eingabefehler, wähle zwischen[1] Verschlüsselung, [2] Entschlüsselung oder [3] Brechen:\n");
         fgets(input, 250, stdin);
         fflush(stdin);
         mode = atoi(input);
