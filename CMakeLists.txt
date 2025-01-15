@@ -16,20 +16,6 @@ add_executable(untitled2 main.c
         string_operations.h
         Vignere-Chiffre/Decryption_Logic/vigenere_decryption_logic.c
         Vignere-Chiffre/Decryption_Logic/vigenere_decryption_logic.h
-        encrypt_caeser.c
-        encrypt_caeser.h
-        decrypt_caesar.c
-        decrypt_caesar.h
-        break_caesar.c
-        break_caesar.h
-        encrypt_vigenere.c
-        encrypt_vigenere.h
-        user_interaction.c
-        user_interaction.h
-        decrypt_vigenere.c
-        decrypt_vigenere.h
-        break_vigenere.c
-        break_vigenere.h
         Break_Vigenere/Kasiski-Test/kasiski_test.c
         Break_Vigenere/Kasiski-Test/kasiski_test.h
         Break_Vigenere/Kasiski-Test/split_into_n_strings.c
@@ -46,6 +32,20 @@ add_executable(untitled2 main.c
         Break_Vigenere/Kasiski-Test/find_key_length.h
         Break_Vigenere/Kasiski-Test/weighted_biggest_divisor.c
         Break_Vigenere/Kasiski-Test/weighted_biggest_divisor.h
+        User_Interaction/break_caesar.c
+        User_Interaction/break_caesar.h
+        User_Interaction/break_vigenere.c
+        User_Interaction/break_vigenere.h
+        User_Interaction/decrypt_caesar.c
+        User_Interaction/decrypt_caesar.h
+        User_Interaction/decrypt_vigenere.c
+        User_Interaction/decrypt_vigenere.h
+        User_Interaction/encrypt_caeser.h
+        User_Interaction/encrypt_caeser.c
+        User_Interaction/encrypt_vigenere.c
+        User_Interaction/encrypt_vigenere.h
+        User_Interaction/user_interaction.c
+        User_Interaction/user_interaction.h
 
 
 )
