@@ -13,9 +13,11 @@
 #include "string_operations.h"
 #include "get_word_match_percentage.h"
 #include <windows.h>
-
 #include "break_cäsar.h"
+#include "decrypt_vigenere.h"
 #include "encrypt_vigenere.h"
+#include "break_vigenere.h"
+#include "user_interaction.h"
 
 
 int main()
@@ -23,130 +25,53 @@ int main()
     SetConsoleOutputCP(65001);
     // damit Umlaute in der Konsole korrekt dargestellt werden: https://www.ndoors.de/wp-content/uploads/2017/10/Umlaute_in_C.pdf
     SetConsoleCP(65001);
-
+while(1){
     char input[256];
     int encryption_method = 0;
     int mode = 0;
 
-    printf("Wähle zwischen [1]Cäsar- und [2]Vigenère-Chiffre:");
+    printf("Wähle zwischen [1] Cäsar- und [2] Vigenère-Chiffre:\n");
     fgets(input, 250, stdin);
     fflush(stdin);
     encryption_method = atoi(input);
 
     while (encryption_method != 1 && encryption_method != 2)
     {
-        printf("Eingabefehler, wähle zwischen:\n[1]Cäsar- oder [2]Vigenère-Chiffre:");
+        printf("Eingabefehler, wähle zwischen: [1] Cäsar- oder [2] Vigenère-Chiffre:\n");
         fgets(input, 250, stdin);
-
+        fflush(stdin);
         encryption_method = atoi(input);
     }
 
-    printf("Wähle zwischen [1]Verschlüsselung, [2]Entschlüsselung oder [3]Brechen:");
+    printf("Wähle zwischen [1] Verschlüsselung, [2] Entschlüsselung oder [3] Brechen:");
     fgets(input, 250, stdin);
-
+    fflush(stdin);
     mode = atoi(input);
 
     while (mode != 1 && mode != 2 && mode != 3)
     {
-        printf("Eingabefehler, wähle zwischen[1]Verschlüsselung, [2]Entschlüsselung oder [3]Brechen:");
+        printf("Eingabefehler, wähle zwischen[1] Verschlüsselung, [2] Entschlüsselung oder [3] Brechen:");
         fgets(input, 250, stdin);
-
+        fflush(stdin);
         mode = atoi(input);
     }
 
-    if (encryption_method == 1 && mode == 1)
+    if (encryption_method == 1)
     {
-        encrypt_cäsar();
+        if (mode == 1) encrypt_cäsar();
+        else if (mode == 2) decrypt_cäsar();
+        else if (mode == 3) break_cäsar();
     }
 
-    if (encryption_method == 1 && mode == 2)
+    if (encryption_method == 2)
     {
-        decrypt_cäsar();
+        if (mode == 1) encrypt_vigenere();
+        else if (mode == 2) decrypt_vigenere();
+        else if (mode == 3) break_vigenere();
     }
-
-    if (encryption_method == 1 && mode == 3)
-    {
-        break_cäsar();
-    }
-
-    if (encryption_method == 2 && mode == 1)
-    {
-        encrypt_vigenere();
-    }
-
-
-    /*
-    int shift_value = 2;
-    char text[] = "das leben ist ein unaufhörliches spiel von licht und schatten, ein ständig wechselndes panorama von eindrücken, emotionen und gedanken";
-    caeser_chiffre_encryption(text, shift_value);
-    printf("Geheim Text:\n%s\n", text);
-
-    int decrypted_shift_value = frequencyAnalysis(text);
-
-    caeser_chiffre_decryption(text, decrypted_shift_value);
-    printf("\nentschlüsselter Text:\n%s\n", text);
-    */
-
-
-    /*
-    //  jeder tag birgt neue herausforderungen, jeder moment verlangt entscheidungen, und doch ist es diese ständige bewegung, die uns antreibt, die uns dazu bringt, immer weiter nach vorne zu blicken, selbst wenn die zukunft ungewiss ist und die vergangenheit schwer auf uns lasten kann. die natur zeigt uns dabei ihre eigene art der fortwährenden erneuerung, sei es im flüstern des windes durch die blätter, im sanften plätschern eines baches oder in der kraft eines gewitters, das den himmel teilt und die erde erzittern lässt, um schließlich in einem beruhigenden regen zu münden. menschen suchen in diesem chaos oft nach halt, nach ritualen und strukturen, die ihnen das gefühl geben, dass ihr dasein nicht völlig im freien fall ist, dass es ein system gibt, eine ordnung, die über das hinausgeht, was sie direkt sehen und fühlen können, doch dieser glauben wird immer wieder herausgefordert von ereignissen, die sich unserer kontrolle entziehen. es ist dieses ständige hin und her zwischen dem wünschen und dem akzeptieren, dem kämpfen und dem loslassen, das uns zu dem macht, was wir sind: wesen, die ständig nach bedeutung streben, auch wenn wir wissen, dass diese bedeutung niemals vollständig greifbar sein wird. in dieser suche nach sinn liegt eine gewisse schönheit, eine art zu sagen, dass wir trotz aller widrigkeiten bereit sind, weiterzumachen, neue wege zu gehen, unbekanntes zu erkunden und vielleicht sogar ein wenig frieden in der unbeständigkeit zu finden, die das leben ausmacht.
-    char input_text[] =
-            "das leben ist ein unaufhörliches spiel von licht und schatten, ein ständig wechselndes panorama von eindrücken, emotionen und gedanken, das uns in seinem strom mitreißt und niemals stillsteht, während wir versuchen, ihm einen sinn abzugewinnen.jeder tag birgt neue herausforderungen, jeder moment verlangt entscheidungen, und doch ist es diese ständige bewegung, die uns antreibt, die uns dazu bringt, immer weiter nach vorne zu blicken, selbst wenn die zukunft ungewiss ist und die vergangenheit schwer auf uns lasten kann. die natur zeigt uns dabei ihre eigene art der fortwährenden erneuerung, sei es im flüstern des windes durch die blätter, im sanften plätschern eines baches oder in der kraft eines gewitters, das den himmel teilt und die erde erzittern lässt, um schließlich in einem beruhigenden regen zu münden. menschen suchen in diesem chaos oft nach halt, nach ritualen und strukturen, die ihnen das gefühl geben, dass ihr dasein nicht völlig im freien fall ist, dass es ein system gibt, eine ordnung, die über das hinausgeht, was sie direkt sehen und fühlen können, doch dieser glauben wird immer wieder herausgefordert von ereignissen, die sich unserer kontrolle entziehen. es ist dieses ständige hin und her zwischen dem wünschen und dem akzeptieren, dem kämpfen und dem loslassen, das uns zu dem macht, was wir sind: wesen, die ständig nach bedeutung streben, auch wenn wir wissen, dass diese bedeutung niemals vollständig greifbar sein wird. in dieser suche nach sinn liegt eine gewisse schönheit, eine art zu sagen, dass wir trotz aller widrigkeiten bereit sind, weiterzumachen, neue wege zu gehen, unbekanntes zu erkunden und vielleicht sogar ein wenig frieden in der unbeständigkeit zu finden, die das leben ausmacht.";
-
-    char secretKey[] = "abcdefghijklmnasldkfmsdlkflsadjflshdl";
-
-    VigenereEncryption(input_text, secretKey);
-
-    printf("Der verschlüsselte Text ist:\n%s\n", input_text);
-
-    // Erstellen einer Kopie des Original Textes
-    unsigned long long int len_org_text = strlen(input_text) + 1;
-    char original_backup[len_org_text];
-    strcpy(original_backup, input_text);
-
-    // letters only enthält nur die Buchstaben des verschlüsselten Textes
-    char letters_only[len_org_text]; // diese Kopie des Textes wird manipuliert um den Schlüssel herauszufinden
-    strcpy(letters_only, input_text);
-    str_lower(letters_only);
-    extract_letters(letters_only);
-    //printf("\nText aus nur kleinen Buchstaben: %s\n", text);
-
-    const unsigned long int len_letters_only = strlen(letters_only) + 1;
-    /*
-    printf("\nlength of cleaned text is %ld\n", len_letters_only);
-    #1#
-
-    kasiski_test(input_text, letters_only, len_letters_only);
-
-    float german_similarity = get_word_match_percentage(input_text);
-    printf("german_similarity: %.2f\n", german_similarity);
-
-    //printf("\nDer entschlüsselte Text besteht zu %.2f Prozent aus den 1000 häufigst genutzten Wörter der deutschen Sprache \n", german_similarity);
-    if (german_similarity < 25)
-    {
-        printf("Kasiski-Test fehlgeschlagen \n"
-               "Brute-Force-Methode folgt\n");
-        german_similarity = brute_force(original_backup, german_similarity, len_org_text, letters_only, len_letters_only);
-
-        if (german_similarity == -1)
-        {
-            printf("\n\nCodebrechen ist fehlgeschlagen\n");
-        }
-
-        if (german_similarity >= 25)
-        {
-            printf("Der entschlüsselte Text ist:\n%s\n", original_backup);
-        }
-
-        if (german_similarity < 25 && german_similarity != -1)
-        {
-            printf("\nKein passenden Schlüssel gefunden, Codebrechen war nicht erfolgreich\n"
-                   "Der Schlüssel im Verhältnis zur Text Länge ist zu hoch um den Text mit Häufigkeitsanalyse zu brechen\n");
-        }
-    }
-    else
-    {
-        printf("Der entschlüsselte Text ist:\n%s\n", input_text);
-    }*/
+    printf("\nWillst du weitermachen oder das Programm so beenden? \"Y\" für weitermachen und \"N\" für Programm beenden.\n[Y/N]");
+    char user_choice = get_user_choice();
+    if (user_choice == 'n') break;
+}
     return 0;
 }

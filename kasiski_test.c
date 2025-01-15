@@ -17,14 +17,14 @@ void kasiski_test(char *input_text, const char *letter_only, const unsigned long
     if (triplet_distances == NULL)
     {
         free(triplet_distances);
-        exit(-1);
+        return;
     }
 
     const int key_length = find_key_length(triplet_distances);
     free(triplet_distances);
     if (key_length == -1)
     {
-        exit(-1);
+        return;
     }
 
     char *secret_key = NULL;
@@ -35,7 +35,7 @@ void kasiski_test(char *input_text, const char *letter_only, const unsigned long
     if (sub_strings == NULL)
     {
         free(secret_key);
-        exit(-1);
+        return;
     }
 
     //erstellen eines arrays, indem die Verschiebe werte der Buchstaben im Geheimwort gespeichert werden können
@@ -45,7 +45,7 @@ void kasiski_test(char *input_text, const char *letter_only, const unsigned long
     {
         free(secret_key);
         free(shift_values);
-        exit(-1);
+        return;
     }
 
     for (int i = 0; i < key_length; i++)
@@ -60,8 +60,8 @@ void kasiski_test(char *input_text, const char *letter_only, const unsigned long
     free(sub_strings);
 
     /*printf("\n");
-    for (int i = 0; i < key_Size; i++) {
-       printf("%d ", shiftValues[i]);
+    for (int i = 0; i < key_length; i++) {
+       printf("%d ", shift_values[i]);
     }
     printf("\n");*/
 
@@ -70,7 +70,7 @@ void kasiski_test(char *input_text, const char *letter_only, const unsigned long
     if (secret_key == NULL)
     {
         free(secret_key);
-        exit(-1);
+        return;
     }
     printf("\nGeheimwort ist: %s\n", secret_key);
 

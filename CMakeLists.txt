@@ -40,6 +40,12 @@ add_executable(untitled2 main.c
         break_cäsar.h
         encrypt_vigenere.c
         encrypt_vigenere.h
+        user_interaction.c
+        user_interaction.h
+        decrypt_vigenere.c
+        decrypt_vigenere.h
+        break_vigenere.c
+        break_vigenere.h
 )
 
 target_link_libraries(untitled2 m)

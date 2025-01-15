@@ -3,90 +3,36 @@
 //
 
 #include "encrypt_vigenere.h"
-
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
-#include "string_operations.h"
-#include "string_operations.h"
+#include "user_interaction.h"
 #include "Vignere-Chiffre/Encryption/encryption.h"
-int is_key_valid(char *key)
-{
-    for (int i = 0; key[i] != '\0'; i++)
-    {
-        if(key[i] < 'a' ||  key[i] > 'z')
-        {
-            return -1;
-        }
-    }
-    return 1;
-}
+
 void encrypt_vigenere()
 {
-    char key[256];
+    printf("Du hast Vigenère-Verschlüsselung gewählt.\nDer zu verschlüsselnde Text wird aus decrypted.txt gelesen. Lege dort deinen Text ab oder nutze den dort schon hinterlegten Text.\n");
+    printf("Gebe zunächst dein Geheimwort ein, mit dem der Text verschlüsselt werden soll.\n");
 
-    printf("Du hast Vigenère-Verschlüsselung gewählt.\nDer zu verschlüsselnde Text wird aus decrypted.txt gelesen. Lege dort deinen Text ab oder nutze den schon vorhandenen Text.\n");
-
-    while(1)
-    {
-        printf("Gebe zunächst dein Geheimwort ein, mit dem der Text verschlüsselt werden soll, es sind nur Buchstaben erlaubt, keine Sonderzeichen:\n");
-        fgets(key, 256, stdin);
-        str_lower(key);
-        int len_key = strlen(key);
-        if (len_key > 0 && key[len_key - 1] == '\n') {
-            key[len_key - 1] = '\0';
-        }
-        if(is_key_valid(key) == 1)break;
-    }
-
+    char *key = get_secret_word();
     printf("Geheimwort ist %s\n", key);
-    FILE *input_file = fopen("decrypted.txt", "r");
-    if (input_file == NULL)
-    {
-        printf("Fehler beim öffnen von entschlüsselt.txt");
-        exit(-1);
-    }
 
-    char vigenere_text[50000];
-    vigenere_text[0] = '\0';
-    char buffer[1024];
-
-    while (fgets(buffer, sizeof(buffer), input_file) != NULL)
-    {
-        strcat(vigenere_text, buffer); //
-    }
-
-    fclose(input_file);
+    char *vigenere_text = read_file_to_string("decrypted.txt");
     printf("Der Text ist:\n%s\n", vigenere_text);
 
     vigenere_encryption(vigenere_text, key);
+    free(key);
     printf("Der verschlüsselte Text ist:\n%s", vigenere_text);
 
-    char user_choice = 'x';
-    while (user_choice != 'y' && user_choice != 'n')
-    {
-        printf("\nWillst du den Text in der encrypted.txt Datei speichern? [Y/N]\n");
-        scanf("%1c", &user_choice);
-        fflush(stdin);
-        user_choice = (char)tolower(user_choice);
-    }
+    printf("\nWillst du den Text in der encrypted.txt Datei speichern? [Y/N]\n");
+    const char user_choice = get_user_choice();
 
     if (user_choice == 'y')
     {
-        FILE *output_file = fopen("encrypted.txt", "w");
-        if (output_file == NULL)
-        {
-            printf("Fehler beim öffnen von verschlüsselt.txt");
-            exit(-1);
-        }
-        fprintf(output_file, "%s", vigenere_text);
-        printf("Der verschlüsselte Text wurde in encrypted.txt gespeichert.\n");
-        fclose(output_file);
+        write_string_to_file("encrypted.txt", vigenere_text);
     }
     else
     {
         printf("Der verschlüsselte Text wurde NICHT in encrypted.txt gespeichert.\n");
     }
+    free(vigenere_text);
 }
