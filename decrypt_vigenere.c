@@ -7,11 +7,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "user_interaction.h"
-#include "Vignere-Chiffre/Decryption/decryption.h"
+#include "Vignere-Chiffre/Decryption_Logic/vigenere_decryption_logic.h"
 
 void decrypt_vigenere()
 {
-    printf("Du hast Vigenère-Entschlüsselung gewählt.\nDer zu entschlüsselnde Text wird aus encrypted.txt gelesen. Lege dort deinen Text ab oder nutze den schon dort hinterlegten Text.\n");
+    printf("Du hast Vigenère-Entschlüsselung gewählt.\nDer zu entschlüsselnde Text wird aus vigenere_chiffre_encrypted.txt gelesen. Lege dort deinen Text ab oder nutze den schon dort hinterlegten Text.\n");
     printf("Gebe zunächst dein Geheimwort ein, mit dem der Text verschlüsselt wurde.\n");
 
     char *key = get_secret_word();
@@ -19,23 +19,23 @@ void decrypt_vigenere()
     const int key_length = strlen(key);
     printf("keylength is %d\n", key_length);
 
-    char *vigenere_text = read_file_to_string("encrypted.txt");
+    char *vigenere_text = read_file_to_string("vigenere_chiffre_encrypted.txt");
     printf("Der verschlüsselte Text ist:\n%s\n", vigenere_text);
 
-    decrypt_vignere(vigenere_text, key, key_length);
+    vigenere_decryption_logic(vigenere_text, key, key_length);
     free(key);
     printf("Der entschlüsselte Text ist:\n%s", vigenere_text);
 
-    printf("\nWillst du den Text in der decrypted.txt Datei speichern? [Y/N]\n");
+    printf("\nWillst du den Text in der vigenere_chiffre_decrypted.txt Datei speichern? [Y/N]\n");
     const char user_choice = get_user_choice();
 
     if (user_choice == 'y')
     {
-        write_string_to_file("decrypted.txt", vigenere_text);
+        write_string_to_file("vigenere_chiffre_decrypted.txt", vigenere_text);
     }
     else
     {
-        printf("Der verschlüsselte Text wurde NICHT in encrypted.txt gespeichert.\n");
+        printf("Der verschlüsselte Text wurde NICHT in vigenere_chiffre_decrypted.txt gespeichert.\n");
     }
     free(vigenere_text);
 }

@@ -5,5 +5,5 @@
 #ifndef DECRYPTION_VIGENERE_H
 #define DECRYPTION_VIGENERE_H
 
-void decrypt_vignere(char *text, const char *secret_key, const int key_size);
+void vigenere_decryption_logic(char *text, const char *secret_key, const int key_size);
 #endif //DECRYPTION_VIGENERE_H

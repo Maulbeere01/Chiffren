@@ -19,7 +19,7 @@ char *read_file_to_string(const char* filename)
     char *string = malloc(50000*sizeof(char));
     if (string == NULL)
     {
-        printf("Fehler bei der Speicherzuweisung");
+        printf("Fehler bei der Speicherzuweisung in user_interaction->read_file_to_string");
         exit(-1);
     }
     string[0] = '\0';
@@ -39,7 +39,7 @@ char get_user_choice()
     char user_choice = 'x';
     while (user_choice != 'y' && user_choice != 'n')
     {
-        printf("Nutze Y für Ja oder N für Nein\n");
+        printf("Nutze Y für Ja oder N für Nein\n[Y/N] ");
         scanf("%1c", &user_choice);
         fflush(stdin);
         user_choice = (char)tolower(user_choice);

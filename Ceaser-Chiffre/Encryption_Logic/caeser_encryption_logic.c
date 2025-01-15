@@ -1,5 +1,5 @@
 // Nimmt einen Text und verschlüsselt ihn, indem jeder Buchstabe um den shiftValue verschoben wird. Bei shiftValue = 1 wird a zu b, und z zu a. Genauso wie A zu B wird
-void c_encryption(char *text, const int shift_value)
+void caeser_encryption_logic(char *text, const int shift_value)
 {
     for (int i = 0; text[i] != '\0'; i++) //Wir interieren durch den Text Buchstabe für Buchstabe
     {

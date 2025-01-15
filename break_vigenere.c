@@ -5,18 +5,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "brute_force.h"
-#include "get_word_match_percentage.h"
-#include "kasiski_test.h"
+#include "Break_Vigenere/brute_force.h"
+#include "Break_Vigenere/get_word_match_percentage.h"
+#include "Break_Vigenere/Kasiski-Test/kasiski_test.h"
 #include "string_operations.h"
 #include "user_interaction.h"
 
 void break_vigenere()
 {
-    printf("Du hast Vigenère-Brechen gewählt.\nDer zu brechende Text wird aus encrypted.txt gelesen. Lege dort deinen Text ab oder nutze den schon vorhandenen Text.\nBereit?\n<press any button to continue>");
+    printf("Du hast Vigenère-Brechen gewählt.\nDer zu brechende Text wird aus vigenere_chiffre_encrypted.txt gelesen. Lege dort deinen Text ab oder nutze den schon vorhandenen Text.\nBereit?\n<press any button to continue>");
     scanf("%*c");
 
-    char *input_text = read_file_to_string("encrypted.txt");
+    char *input_text = read_file_to_string("vigenere_chiffre_encrypted.txt");
     printf("Der verschlüsselte Text ist:\n%s\n", input_text);
 
     // Erstellen einer Kopie des Originaltextes
@@ -55,16 +55,16 @@ void break_vigenere()
         {
             printf("Der entschlüsselte Text ist:\n%s\n", original_backup);
 
-            printf("\nWillst du den Text in der decrypted.txt Datei speichern? [Y/N]\n");
+            printf("\nWillst du den Text in der vigenere_chiffre_encrypted.txt Datei speichern? [Y/N]\n");
             const char user_choice = get_user_choice();
 
             if (user_choice == 'y')
             {
-                write_string_to_file("decrypted.txt", input_text);
+                write_string_to_file("vigenere_chiffre_encrypted.txt", input_text);
             }
             else
             {
-                printf("Der verschlüsselte Text wurde NICHT in encrypted.txt gespeichert.\n");
+                printf("Der verschlüsselte Text wurde NICHT in vigenere_chiffre_encrypted.txt gespeichert.\n");
             }
             free(input_text);
         }
@@ -79,16 +79,16 @@ void break_vigenere()
     {
         printf("Der entschlüsselte Text ist:\n%s\n", input_text);
 
-        printf("\nWillst du den Text in der decrypted.txt Datei speichern? [Y/N]\n");
+        printf("\nWillst du den Text in der vigenere_chiffre_encrypted.txt Datei speichern? [Y/N]\n");
         const char user_choice = get_user_choice();
 
         if (user_choice == 'y')
         {
-            write_string_to_file("decrypted.txt", input_text);
+            write_string_to_file("vigenere_chiffre_encrypted.txt", input_text);
         }
         else
         {
-            printf("Der verschlüsselte Text wurde NICHT in encrypted.txt gespeichert.\n");
+            printf("Der verschlüsselte Text wurde NICHT in vigenere_chiffre_encrypted.txt gespeichert.\n");
         }
         free(input_text);
     }

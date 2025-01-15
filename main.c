@@ -1,23 +1,13 @@
 #include <stdio.h>
-#include <string.h>
-#include "Ceaser-Chiffre/c_encryption.h"
-#include "Vignere-Chiffre/Encryption/encryption.h"
-#include "frequency_analysis.h"
-#include "Ceaser-Chiffre/c_decryption.h"
-#include "kasiski_test.h"
-#include <math.h>
 #include <stdlib.h>
-#include "encrypt_cäser.h"
-#include "decrypt_cäsar.h"
-#include "brute_force.h"
-#include "string_operations.h"
-#include "get_word_match_percentage.h"
+#include "encrypt_caeser.h"
 #include <windows.h>
-#include "break_cäsar.h"
+#include "break_caesar.h"
 #include "decrypt_vigenere.h"
 #include "encrypt_vigenere.h"
 #include "break_vigenere.h"
 #include "user_interaction.h"
+#include "decrypt_caesar.h"
 
 
 int main()
@@ -58,8 +48,8 @@ while(1){
 
     if (encryption_method == 1)
     {
-        if (mode == 1) encrypt_cäsar();
-        else if (mode == 2) decrypt_cäsar();
+        if (mode == 1) encrypt_caesar();
+        else if (mode == 2) decrypt_caesar();
         else if (mode == 3) break_cäsar();
     }
 
@@ -69,7 +59,7 @@ while(1){
         else if (mode == 2) decrypt_vigenere();
         else if (mode == 3) break_vigenere();
     }
-    printf("\nWillst du weitermachen oder das Programm so beenden? \"Y\" für weitermachen und \"N\" für Programm beenden.\n[Y/N]");
+    printf("\nWillst du weitermachen oder das Programm so beenden? \"Y\" für weitermachen und \"N\" für Programm beenden.\n");
     char user_choice = get_user_choice();
     if (user_choice == 'n') break;
 }

@@ -5,5 +5,5 @@
 #ifndef DECRYPTION_H
 #define DECRYPTION_H
 
-void c_decryption(char *text, const int decryptedShiftValue);
+void caeser_decryption_logic(char *text, const int decryptedShiftValue);
 #endif //DECRYPTION_H

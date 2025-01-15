@@ -4,40 +4,24 @@ project(untitled2 C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(untitled2 main.c
-        Ceaser-Chiffre/c_encryption.c
+        Ceaser-Chiffre/Encryption_Logic/caeser_encryption_logic.c
         frequency_analysis.c
-        Ceaser-Chiffre/c_encryption.h
+        Ceaser-Chiffre/Encryption_Logic/caeser_encryption_logic.h
         frequency_analysis.h
-        Ceaser-Chiffre/c_decryption.c
-        Ceaser-Chiffre/c_decryption.h
-        Vignere-Chiffre/Encryption/encryption.c
-        Vignere-Chiffre/Encryption/encryption.h
-        kasiski_test.c
-        kasiski_test.h
-        letter_sequences.c
-        letter_sequences.h
-        find_key_length.c
-        find_key_length.h
-        split_into_n_strings.c
-        split_into_n_strings.h
+        Ceaser-Chiffre/Decryption_Logic/caeser_decryption_logic.c
+        Ceaser-Chiffre/Decryption_Logic/caeser_decryption_logic.h
+        Vignere-Chiffre/Encryption_Logic/vigenere_encryption_logic.c
+        Vignere-Chiffre/Encryption_Logic/vigenere_decryption_logic.h
         string_operations.c
         string_operations.h
-        shift_values_to_word.c
-        shift_values_to_word.h
-        Vignere-Chiffre/Decryption/decryption.c
-        Vignere-Chiffre/Decryption/decryption.h
-        weighted_biggest_divisor.c
-        weighted_biggest_divisor.h
-        brute_force.c
-        brute_force.h
-        get_word_match_percentage.c
-        get_word_match_percentage.h
-        encrypt_cäser.c
-        encrypt_cäser.h
-        decrypt_cäsar.c
-        decrypt_cäsar.h
-        break_cäsar.c
-        break_cäsar.h
+        Vignere-Chiffre/Decryption_Logic/vigenere_decryption_logic.c
+        Vignere-Chiffre/Decryption_Logic/vigenere_decryption_logic.h
+        encrypt_caeser.c
+        encrypt_caeser.h
+        decrypt_caesar.c
+        decrypt_caesar.h
+        break_caesar.c
+        break_caesar.h
         encrypt_vigenere.c
         encrypt_vigenere.h
         user_interaction.c
@@ -46,6 +30,24 @@ add_executable(untitled2 main.c
         decrypt_vigenere.h
         break_vigenere.c
         break_vigenere.h
+        Break_Vigenere/Kasiski-Test/kasiski_test.c
+        Break_Vigenere/Kasiski-Test/kasiski_test.h
+        Break_Vigenere/Kasiski-Test/split_into_n_strings.c
+        Break_Vigenere/Kasiski-Test/split_into_n_strings.h
+        Break_Vigenere/Kasiski-Test/shift_values_to_word.h
+        Break_Vigenere/Kasiski-Test/shift_values_to_word.c
+        Break_Vigenere/get_word_match_percentage.c
+        Break_Vigenere/get_word_match_percentage.h
+        Break_Vigenere/brute_force.c
+        Break_Vigenere/brute_force.h
+        Break_Vigenere/Kasiski-Test/find_triplets.c
+        Break_Vigenere/Kasiski-Test/find_triplets.h
+        Break_Vigenere/Kasiski-Test/find_key_length.c
+        Break_Vigenere/Kasiski-Test/find_key_length.h
+        Break_Vigenere/Kasiski-Test/weighted_biggest_divisor.c
+        Break_Vigenere/Kasiski-Test/weighted_biggest_divisor.h
+
+
 )
 
 target_link_libraries(untitled2 m)
