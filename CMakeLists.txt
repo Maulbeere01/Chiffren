@@ -11,7 +11,7 @@ add_executable(untitled2 main.c
         Ceaser-Chiffre/Decryption_Logic/caeser_decryption_logic.c
         Ceaser-Chiffre/Decryption_Logic/caeser_decryption_logic.h
         Vignere-Chiffre/Encryption_Logic/vigenere_encryption_logic.c
-        Vignere-Chiffre/Encryption_Logic/vigenere_decryption_logic.h
+        Vignere-Chiffre/Encryption_Logic/vigenere_encryption_logic.h
         string_operations.c
         string_operations.h
         Vignere-Chiffre/Decryption_Logic/vigenere_decryption_logic.c

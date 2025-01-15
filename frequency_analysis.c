@@ -4,7 +4,7 @@
 int frequency_analysis(const char *text)
 {
     // Array um die Häufigkeit jedes Buchstaben zu zählen, index 0 steht für a, index 1 steht für b, etc.
-    double letter_count[26] = {0};
+    double letter_count[26];
     for (int i = 0; i < 26; i++)
     {
         letter_count[i] = 0;
@@ -70,7 +70,6 @@ int frequency_analysis(const char *text)
         }
     }
     /*printf("index smallest difference: %d\n", index_smallest);*/
-
     /*printf("\nshift value: %d", index_smallest);*/
 
     return index_smallest;

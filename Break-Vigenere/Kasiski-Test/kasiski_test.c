@@ -34,7 +34,7 @@ void kasiski_test(char *input_text, const char *letter_only, const unsigned long
 
     if (sub_strings == NULL)
     {
-        free(secret_key);
+        free(sub_strings);
         return;
     }
 
@@ -43,7 +43,7 @@ void kasiski_test(char *input_text, const char *letter_only, const unsigned long
 
     if (shift_values == NULL)
     {
-        free(secret_key);
+        free(sub_strings);
         free(shift_values);
         return;
     }

@@ -26,6 +26,7 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
 
         if (sub_strings == NULL)
         {
+            free(sub_strings);
             exit(-1);
         }
 
@@ -34,6 +35,7 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
 
         if (shift_values == NULL)
         {
+            free(shift_values);
             exit(-1);
         }
 
@@ -59,6 +61,7 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
         free(shift_values);
         if (secret_key == NULL)
         {
+            free(secret_key);
             exit(-1);
         }
 
@@ -80,7 +83,7 @@ float brute_force(char *input_text, float german_similarity, unsigned long long 
     if (german_similarity >= 25)
     {
         strcpy(input_text, tmp_text);
-        printf("Überseinstimmung mit der deutschen Sprache ist ca. [%.2f%%]\n", german_similarity);
+        printf("Übereinstimmung mit der deutschen Sprache ist ca. [%.2f%%]\n", german_similarity);
     }
     return german_similarity;
 }

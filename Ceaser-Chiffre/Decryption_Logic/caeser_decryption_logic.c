@@ -3,7 +3,7 @@
 //
 #include <stdio.h>
 
-// Entschlüsselt einen Geheimtext, welcher mit Ceaser-Chiffre verschlüsselt wurde, mit einem Verschiebe-Wert
+// Entschlüsselt einen Geheimtext, welcher mit Cäsar-Chiffre verschlüsselt wurde, mit einem Verschiebe-Wert
 void caeser_decryption_logic(char *text, const int decrypted_shift_value)
 {
     for (int i = 0; text[i] != '\0'; i++)

@@ -17,7 +17,7 @@ void break_vigenere()
     scanf("%*c");
 
     char *input_text = read_file_to_string("vigenere_chiffre_encrypted.txt");
-    printf("\nDer verschlüsselte Text ist:\n%s\n", input_text);
+    printf("\nDer verschlüsselte Text ist:\n\n%s\n", input_text);
 
     // Erstellen einer Kopie des Originaltextes
     unsigned long long int len_org_text = strlen(input_text) + 1;
@@ -38,13 +38,17 @@ void break_vigenere()
     kasiski_test(input_text, letters_only, len_letters_only);
 
     float german_similarity = get_word_match_percentage(input_text);
-    printf("Überseinstimmung mit der deutschen Sprache ist ca. [%.2f%%]\n\n", german_similarity);
+    if (german_similarity > 25)
+    {
+        printf("Überseinstimmung mit der deutschen Sprache ist ca. [%.2f%%]\n\n", german_similarity);
+    }
 
     //printf("\nDer entschlüsselte Text besteht zu %.2f Prozent aus den 1000 häufigst genutzten Wörter der deutschen Sprache \n", german_similarity);
     if (german_similarity < 25)
     {
-        printf("Kasiski-Test fehlgeschlagen \nBrute-Force-Methode folgt\n");
-        german_similarity = brute_force(original_backup, german_similarity, len_org_text, letters_only, len_letters_only);
+        printf("\nKasiski-Test fehlgeschlagen \nBrute-Force-Methode folgt\n");
+        german_similarity = brute_force(original_backup, german_similarity, len_org_text, letters_only,
+                                        len_letters_only);
 
         if (german_similarity == -1)
         {
@@ -79,12 +83,12 @@ void break_vigenere()
     {
         printf("\nDer entschlüsselte Text ist:\n%s\n", input_text);
 
-        printf("\nWillst du den Text in der vigenere_chiffre_encrypted.txt Datei speichern?\n");
+        printf("\nWillst du den Text in der vigenere_chiffre_decrypted.txt Datei speichern?\n");
         const char user_choice = get_user_choice();
 
         if (user_choice == 'y')
         {
-            write_string_to_file("vigenere_chiffre_encrypted.txt", input_text);
+            write_string_to_file("vigenere_chiffre_decrypted.txt", input_text);
         }
         else
         {

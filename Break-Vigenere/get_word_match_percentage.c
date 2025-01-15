@@ -77,6 +77,7 @@ void create_hash_table()
     {
         add_node(word);
     }
+    fclose(file);
     is_hash_table_created = 1;
     /*print_hash_table();*/
 }

@@ -10,10 +10,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//Sucht alle 3er-Buchstabenfolgen welche mehrmals im Text vorkommen und speichert ihren Abstand zueinander in *distances. Gibt das Array der gefundenen Abstaende zurueck
+//Sucht alle 3er-Buchstabenfolgen welche mehrmals im Text vorkommen und speichert ihren Abstand zueinander in *distances. Gibt das Array der gefundenen Abstände zurück
 int *find_triplets(const char *text, const unsigned long int length)
 {
-
     int *distances = NULL; // leeres Array initialisieren
     int index = 0; // zählt wie viele Elemente dem array hinzugefügt wurden
     // Schritt 1: Abstände berechnen. Manche Abstände werden doppelt gezählt, aber egal, da wir den häufigst gemeinsamen Teiler suchen
@@ -30,17 +29,16 @@ int *find_triplets(const char *text, const unsigned long int length)
                 if (distances == NULL)
                 {
                     printf("\nSpeicheranfrage in find_letter_sequences fehlgeschlagen\n");
+                    free(distances);
                     exit(-1);
                 }
-
                 distances[index] = j - i;
-
                 // printf("\nAbstand von %c%c%c (an Stelle %d) zur Wiederholung ist %d und an Index %d in distances gespeichert\n", text[i],text[i+1], text[i+2], i, distances[index], index);
-
                 index++;
             }
         }
     }
+
     if (distances == NULL)
     {
         free(distances);
@@ -51,6 +49,7 @@ int *find_triplets(const char *text, const unsigned long int length)
     if (distances == NULL)
     {
         printf("\nSpeicheranfrage in find_letter_sequences fehlgeschlagen\n");
+        free(distances);
         exit(-1);
     }
     distances[index] = 0;

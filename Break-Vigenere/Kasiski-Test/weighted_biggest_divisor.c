@@ -38,11 +38,13 @@ int find_largest_divisor_weighted(const int *count_array, const unsigned long in
         }
     }
 
-    /*for (int i = 0; i <= 256; i++)
+    /*
+    for (int i = 0; i <= 256; i++)
     {
         printf("%d:%.0lf  ", i, number_of_elements[i]);
     }
-    printf("\n");*/
+    printf("\n");
+    */
 
     for (int i = 0; i <= 256; i++)
     {

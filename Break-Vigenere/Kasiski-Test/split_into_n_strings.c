@@ -10,6 +10,7 @@ char **split_into_n_strings(const char *text, const int n, const unsigned long i
     char **strings = malloc((n * sizeof(char *)));
     if (strings == NULL)
     {
+        free(strings);
         printf("speicherzuweisung Fehler\n");
         exit(-1);
     }
@@ -24,6 +25,11 @@ char **split_into_n_strings(const char *text, const int n, const unsigned long i
 
         if (strings[i] == NULL)
         {
+            for (int j = 0; j < i; j++)
+            {
+                free(strings[j]);
+            }
+            free(strings);
             printf("speicherzuweisung Fehler\n");
             exit(-1);
         }

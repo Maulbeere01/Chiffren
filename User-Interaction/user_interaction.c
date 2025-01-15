@@ -14,11 +14,13 @@ char *read_file_to_string(const char *filename)
     if (input_file == NULL)
     {
         printf("Fehler beim öffnen von %s", filename);
+        fclose(input_file);
         exit(-1);
     }
     char *string = malloc(50000 * sizeof(char));
     if (string == NULL)
     {
+        free(string);
         printf("Fehler bei der Speicherzuweisung in user_interaction->read_file_to_string");
         exit(-1);
     }
@@ -52,6 +54,7 @@ void write_string_to_file(const char *filename, char *string)
     FILE *output_file = fopen(filename, "w");
     if (output_file == NULL)
     {
+        fclose(output_file);
         printf("Fehler beim öffnen von %s", filename);
         exit(-1);
     }

@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "user_interaction.h"
-#include "../Vignere-Chiffre/Encryption_Logic/vigenere_decryption_logic.h"
+#include "../Vignere-Chiffre/Encryption_Logic/vigenere_encryption_logic.h"
 
 void encrypt_vigenere()
 {

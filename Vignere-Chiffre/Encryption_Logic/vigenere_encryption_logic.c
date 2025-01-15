@@ -9,29 +9,23 @@
 // ist der Schlüssel tom so wird der erste Buchstabe im Text um 20 (t ist der 20te Buchstabe im Alphabet) verschoben, der zweite Buchstabe um 15 und der dritte um 13. Der vierte Buchstabe wird dann wieder um den ersten Buchstaben des Schlüssels verschoben
 // die Verschlüsselung wird mit zunehmender Länge des Schlüssels und abnehmender Länge des Textes schwieriger zu knacken
 
-
-void vigenere_encryption(char *text, char *secretKey)
+void vigenere_encryption(char *text, char *secret_key)
 {
-    const char *tempSecretKey = str_lower(secretKey);
-    const unsigned int lengthSecretKey = strlen(tempSecretKey);
-    int keyIndex = 0;
-
-    //printf("\nLength of key is %d\n", lengthSecretKey);
-    //printf("\nOriginal Text: %s\n", text);
+    const char *temp_secret_key = str_lower(secret_key);
+    const unsigned int length_secret_key = strlen(temp_secret_key);
+    int key_index = 0;
 
     for (int i = 0; text[i] != '\0'; i++)
     {
         if (text[i] >= 'a' && text[i] <= 'z')
         {
-            // Der Text wird verschlüsselt, indem jeder Buchstabe im Text um den Buchstaben im Schlüssel verschoben wird. Ist das Ende des Schlüssels erreicht, beginnt man wieder am Anfang des Schlüssels, dieser wird also immer wieder verwendet
-            text[i] = (char) ((text[i] - 'a' + (tempSecretKey[keyIndex % lengthSecretKey] - 'a')) % 26 + 'a');
-            keyIndex++;
+            text[i] = (char) ((text[i] - 'a' + (temp_secret_key[key_index % length_secret_key] - 'a')) % 26 + 'a');
+            key_index++;
         }
         else if (text[i] >= 'A' && text[i] <= 'Z')
         {
-            text[i] = (char) ((text[i] - 'A' + (tempSecretKey[keyIndex % lengthSecretKey] - 'a')) % 26 + 'A');
-            keyIndex++;
+            text[i] = (char) ((text[i] - 'A' + (temp_secret_key[key_index % length_secret_key] - 'a')) % 26 + 'A');
+            key_index++;
         }
     }
-    //printf("\nEncrypted Text: %s\n", text);
 }
