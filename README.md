@@ -9,11 +9,8 @@ Ein CLI C-Programm zur Ver- und Entschlüsselung sowie zum Brechen von klassisch
 1.  [Funktionen](#funktionen)
 2.  [Kernalgorithmen](#kernalgorithmen)
 3.  [Voraussetzungen](#voraussetzungen)
-4.  [Kompilierung](#kompilierung)
 5.  [Benutzung](#benutzung)
-6.  [Dateistruktur](#dateistruktur)
-7.  [Bekannte Einschränkungen](#bekannte-einschränkungen)
-8.  [Mögliche Erweiterungen](#mögliche-erweiterungen)
+
 
 ## Funktionen
 
