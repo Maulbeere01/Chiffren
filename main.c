@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "User-Interaction/encrypt_caeser.h"
+#ifdef _WIN32
 #include <windows.h>
+#endif
 #include "User-Interaction/break_caesar.h"
 #include "User-Interaction/decrypt_vigenere.h"
 #include "User-Interaction/encrypt_vigenere.h"
@@ -12,9 +14,11 @@
 
 int main()
 {
+#ifdef _WIN32
     SetConsoleOutputCP(65001);
-    // damit Umlaute in der Konsole korrekt dargestellt werden: https://www.ndoors.de/wp-content/uploads/2017/10/Umlaute_in_C.pdf
     SetConsoleCP(65001);
+#endif
+
     while (1)
     {
         char input[256];
