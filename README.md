@@ -67,7 +67,7 @@ Das Programm implementiert und nutzt folgende kryptographische Techniken:
 2. **(Optional) Abhängigkeiten installieren**
 
    Stelle sicher, dass ein C-Compiler (z.B. `gcc`) und `make` installiert sind.  
-   UNIX:
+   Debian/Ubuntu:
     ```sh
     sudo apt update
     sudo apt install build-essential
