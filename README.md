@@ -93,7 +93,7 @@ Das Programm implementiert und nutzt folgende kryptographische Techniken:
     ```
 
 > **Hinweis:**  
-> Stelle sicher, dass sich die benötigten Textdateien (`caeser_chiffre_decrypted.txt`, `caeser_chiffre_encrypted.txt`, `vigenere_chiffre_decrypted.txt`, `vigenere_chiffre_encrypted.txt`, `words.txt`) im selben Verzeichnis wie das Executable befinden oder passe die Pfade im Code entsprechend an.
+> Stelle sicher, dass der data Ordner, mit den benötigten Textdateien (`caeser_chiffre_decrypted.txt`, `caeser_chiffre_encrypted.txt`, `vigenere_chiffre_decrypted.txt`, `vigenere_chiffre_encrypted.txt`, `words.txt`) im selben Verzeichnis wie die Executable ist oder passe die Pfade im Code entsprechend an.
 
 
 ## Benutzung
