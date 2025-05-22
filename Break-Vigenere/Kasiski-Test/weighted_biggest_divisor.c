@@ -20,6 +20,7 @@ int find_biggest_element(const double *number_of_elements)
 }
 
 //zählt die Häufigkeit jedes Teilers und multipliziert ihn mit der Wurzel seines Index, um ein gewichtetes Ergebnis zu erhalten. Das heisst es wird das häufigste und größte Element, abhängig von einer bestimmten Gewichtung bestimmt.
+
 int find_largest_divisor_weighted(const int *count_array, const unsigned long int length)
 {
     //erstelle ein array, um die Häufigkeiten der Teiler zu zählen

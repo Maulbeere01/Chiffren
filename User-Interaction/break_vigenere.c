@@ -16,7 +16,7 @@ void break_vigenere()
     printf("Du hast Vigenère-Brechen gewählt.\nDer zu brechende Text wird aus vigenere_chiffre_encrypted.txt gelesen. Lege dort deinen Text ab oder nutze den schon vorhandenen Text.\nBereit?\n<press any button to continue>");
     scanf("%*c");
 
-    char *input_text = read_file_to_string("vigenere_chiffre_encrypted.txt");
+    char *input_text = read_file_to_string("data/vigenere_chiffre_encrypted.txt");
     printf("\nDer verschlüsselte Text ist:\n\n%s\n", input_text);
 
     // Erstellen einer Kopie des Originaltextes
@@ -88,7 +88,7 @@ void break_vigenere()
 
         if (user_choice == 'y')
         {
-            write_string_to_file("vigenere_chiffre_decrypted.txt", input_text);
+            write_string_to_file("data/vigenere_chiffre_decrypted.txt", input_text);
         }
         else
         {

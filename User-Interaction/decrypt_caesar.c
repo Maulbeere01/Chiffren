@@ -14,7 +14,7 @@ void decrypt_caesar()
     printf("Gebe den Wert ein, mit dem der Text verschlüsselt wurde:\n");
 
     int shift_value = get_valid_shift_value();
-    char *cäsar_text = read_file_to_string("caeser_chiffre_encrypted.txt");
+    char *cäsar_text = read_file_to_string("data/caeser_chiffre_encrypted.txt");
     printf("\nDer verschlüsselte Text ist:\n\n%s", cäsar_text);
 
     caeser_decryption_logic(cäsar_text, shift_value);
@@ -25,7 +25,7 @@ void decrypt_caesar()
 
     if (user_choice == 'y')
     {
-        write_string_to_file("caeser_chiffre_decrypted.txt", cäsar_text);
+        write_string_to_file("data/caeser_chiffre_decrypted.txt", cäsar_text);
     }
     else
     {

@@ -14,7 +14,7 @@ void break_cäsar()
     printf("Du hast Cäsar-Brechen gewählt.\nDer zu brechende Text wird aus caeser_chiffre_encrypted.txt gelesen. Lege dort deinen Text ab oder nutze den schon vorhandenen Text.\nBereit?\n<press any button to continue>");
     scanf("%*c");
 
-    char *cäsar_text = read_file_to_string("caeser_chiffre_encrypted.txt");
+    char *cäsar_text = read_file_to_string("data/caeser_chiffre_encrypted.txt");
 
     printf("\nDer verschlüsselte Text ist\n\n%s", cäsar_text);
 
@@ -28,7 +28,7 @@ void break_cäsar()
 
     if (user_choice == 'y')
     {
-        write_string_to_file("caeser_chiffre_decrypted.txt", cäsar_text);
+        write_string_to_file("data/caeser_chiffre_decrypted.txt", cäsar_text);
     }
     else
     {

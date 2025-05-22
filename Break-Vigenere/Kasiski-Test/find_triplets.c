@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 //Sucht alle 3er-Buchstabenfolgen welche mehrmals im Text vorkommen und speichert ihren Abstand zueinander in *distances. Gibt das Array der gefundenen Abstände zurück
+
 int *find_triplets(const char *text, const unsigned long int length)
 {
     int *distances = NULL; // leeres Array initialisieren

@@ -4,7 +4,9 @@
 
 #include <stdio.h>
 #include <string.h>
+
 // Entschlüsselt Vigenere, indem mit dem Verschlüsselwort, jeder Buchstabe im Geheimtext nach links verschoben wird
+
 void vigenere_decryption_logic(char *text, const char *secret_key, const int key_size)
 {
     int keyIndex = 0;

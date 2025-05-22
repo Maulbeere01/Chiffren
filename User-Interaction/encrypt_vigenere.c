@@ -15,7 +15,7 @@ void encrypt_vigenere()
 
     char *key = get_secret_word();
 
-    char *vigenere_text = read_file_to_string("vigenere_chiffre_decrypted.txt");
+    char *vigenere_text = read_file_to_string("data/vigenere_chiffre_decrypted.txt");
     printf("\nDer zu verschlüsselnde Text ist:\n\n%s", vigenere_text);
 
     vigenere_encryption(vigenere_text, key);
@@ -27,7 +27,7 @@ void encrypt_vigenere()
 
     if (user_choice == 'y')
     {
-        write_string_to_file("vigenere_chiffre_encrypted.txt", vigenere_text);
+        write_string_to_file("data/vigenere_chiffre_encrypted.txt", vigenere_text);
     }
     else
     {

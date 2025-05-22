@@ -13,6 +13,7 @@ void vigenere_encryption(char *text, char *secret_key)
 {
     const char *temp_secret_key = str_lower(secret_key);
     const unsigned int length_secret_key = strlen(temp_secret_key);
+
     int key_index = 0;
 
     for (int i = 0; text[i] != '\0'; i++)

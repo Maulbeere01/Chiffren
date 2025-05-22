@@ -6,6 +6,7 @@
 #include <string.h>
 
 #define SIZE 49999
+
 // 0 für hash table existiert nicht und muss erstellt werden und 1 für hash table schon erstellt, ansonsten wird bei der Brute-Force-Methode für jede Schlüssellänge die gleiche hashtable neu erstellt werden.
 int is_hash_table_created = 0;
 
@@ -63,7 +64,7 @@ void create_hash_table()
         hash_table[i] = NULL;
     }
 
-    FILE *file = fopen("words.txt", "r");
+    FILE *file = fopen("data/words.txt", "r");
 
     if (file == NULL)
     {

@@ -7,6 +7,7 @@
 #include "weighted_biggest_divisor.h"
 
 //Bestimmt die Schlüssellänge, indem der häufigste und grösste vorkommende Teiler der Abstände bestimmt wird. Die Größe der Teiler wird positiv gewichtet, heißt ein großer Teiler kann, obwohl er nicht am häufigsten vorkommt bevorzugt werden.
+
 int find_key_length(const int *distances)
 {
     int *divisors = NULL; // Array um alle Teiler der Abstände, welche aus distances berechnet werden zu speichern

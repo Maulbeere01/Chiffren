@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <math.h>
+
 // Wir bestimmen die Verteilung der Häufigkeit jedes Buchstabens im Geheimtext. Diese Verteilung vergleichen wir mit der Häufigkeitsverteilung der Buchstaben in der deutschen Sprache. Wir verschieben dafür unsere Häufigkeitsverteilung 26-mal und bestimmen, wo die Abweichung von der Standardverteilung der deutschen Sprache am geringsten ist
+
 int frequency_analysis(const char *text)
 {
     // Array um die Häufigkeit jedes Buchstaben zu zählen, index 0 steht für a, index 1 steht für b, etc.

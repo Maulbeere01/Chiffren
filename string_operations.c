@@ -2,6 +2,7 @@
 // Created by ben10 on 12/7/24.
 //
 #include <ctype.h>
+
 //Macht alle Grossbuchstaben in einem String zu Kleinbuchstaben
 char *str_lower(char *string)
 {

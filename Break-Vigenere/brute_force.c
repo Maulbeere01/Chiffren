@@ -11,6 +11,7 @@
 #include "../Vignere-Chiffre/Decryption_Logic/vigenere_decryption_logic.h"
 
 // Startet bei Schlüssellänge 1 und probiert alle möglichen Längen bis 256 aus
+
 float brute_force(char *input_text, float german_similarity, unsigned long long int len_input_text,
                   const char *letter_only, const unsigned long int len_letters_only)
 {
