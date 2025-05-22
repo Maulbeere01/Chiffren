@@ -55,49 +55,53 @@ Das Programm implementiert und nutzt folgende kryptographische Techniken:
 
 *   Ein C-Compiler (z.B. GCC, Clang, MSVC)
 *   Standard C-Bibliotheken (`stdio.h`, `stdlib.h`, `string.h`, `ctype.h`, `math.h`)
-*   Die Datei `words.txt` muss im selben Verzeichnis wie die ausführbare Datei liegen, damit das Brechen der Vigenère-Chiffre korrekt funktioniert. Diese Datei sollte eine Liste häufiger Wörter der Zielsprache (hier Deutsch), ein Wort pro Zeile, enthalten.
+*   Die Textdateien müssen im selben Verzeichnis wie die ausführbare Datei liegen, damit das Programm korrekt funktioniert.
 
-## Kompilierung
+## Schnellstart: Installation und Ausführung
 
-1.  Stellen Sie sicher, dass alle Quelldateien (`.c` und `.h`) in der korrekten Verzeichnisstruktur vorliegen, wie in den `#include`-Anweisungen referenziert.
-    *   `main.c` im Hauptverzeichnis.
-    *   Weitere Logik- und Hilfsfunktionen in Unterverzeichnissen wie `User-Interaction/`, `User-Interaction/Ceaser-Chiffre/`, `User-Interaction/Vignere-Chiffre/`, etc.
+1. **Repository klonen**
 
-2.  Öffnen Sie ein Terminal oder eine Kommandozeile.
-
-3.  Kompilieren Sie das Projekt. Ein Beispiel mit GCC (Pfade ggf. anpassen):
-    ```bash
-    gcc main.c \
-        User-Interaction/user_interaction.c \
-        User-Interaction/string_operations.c \
-        User-Interaction/frequency_analysis.c \
-        User-Interaction/Ceaser-Chiffre/Encryption_Logic/caeser_encryption_logic.c \
-        User-Interaction/Ceaser-Chiffre/Decryption_Logic/caeser_decryption_logic.c \
-        User-Interaction/encrypt_caesar.c \
-        User-Interaction/decrypt_caesar.c \
-        User-Interaction/break_caesar.c \
-        User-Interaction/Vignere-Chiffre/Encryption_Logic/vigenere_encryption_logic.c \
-        User-Interaction/Vignere-Chiffre/Decryption_Logic/vigenere_decryption_logic.c \
-        User-Interaction/encrypt_vigenere.c \
-        User-Interaction/decrypt_vigenere.c \
-        User-Interaction/break_vigenere.c \
-        User-Interaction/Break-Vigenere/Kasiski-Test/kasiski_test.c \
-        User-Interaction/Break-Vigenere/Kasiski-Test/find_triplets.c \
-        User-Interaction/Break-Vigenere/Kasiski-Test/find_key_length.c \
-        User-Interaction/Break-Vigenere/Kasiski-Test/weighted_biggest_divisor.c \
-        User-Interaction/Break-Vigenere/Kasiski-Test/split_into_n_strings.c \
-        User-Interaction/Break-Vigenere/Kasiski-Test/shift_values_to_word.c \
-        User-Interaction/Break-Vigenere/brute_force.c \
-        User-Interaction/Break-Vigenere/get_word_match_percentage.c \
-        -o cipher_tool -lm -I.
+   Klone das Projekt-Repository:
+    ```sh
+    git clone git@github.com:Maulbeere01/Chiffren.git
+    cd Chiffren
     ```
-    *   `-lm` wird für die mathematischen Funktionen aus `math.h` benötigt.
-    *   `-I.` fügt das aktuelle Verzeichnis zum Include-Pfad hinzu, falls Header-Dateien relativ zum Projektstammverzeichnis eingebunden werden.
-    *   Für ein Projekt dieser Größe empfiehlt sich die Verwendung eines `Makefile`.
+
+2. **(Optional) Abhängigkeiten installieren**
+
+   Stelle sicher, dass ein C-Compiler (z.B. `gcc`) und `make` installiert sind.  
+   UNIX:
+    ```sh
+    sudo apt update
+    sudo apt install build-essential
+    ```
+
+3. **Projekt kompilieren**
+
+    ```sh
+    make
+    ```
+
+4. **Programm ausführen**
+
+    ```sh
+    ./cipher_tool
+    ```
+
+5. **(Optional) Aufräumen**
+
+   Um alle erzeugten Objektdateien (`.o`) und die .exe zu löschen:
+    ```sh
+    make clean
+    ```
+
+> **Hinweis:**  
+> Stelle sicher, dass sich die benötigten Textdateien (`caeser_chiffre_decrypted.txt`, `caeser_chiffre_encrypted.txt`, `vigenere_chiffre_decrypted.txt`, `vigenere_chiffre_encrypted.txt`, `words.txt`) im selben Verzeichnis wie das Executable befinden oder passe die Pfade im Code entsprechend an.
+
 
 ## Benutzung
 
-1.  Starten Sie die kompilierte Anwendung (`cipher_tool.exe` unter Windows oder `cipher_tool` unter Linux/macOS, falls plattformunabhängig kompiliert).
+1.  Starten Sie die kompilierte Datei (`cipher_tool.exe` unter Windows oder `cipher_tool` unter Linux.
 2.  Folgen Sie den Anweisungen im Menü:
     *   Wählen Sie die Chiffre (Cäsar oder Vigenère).
     *   Wählen Sie den Modus (Verschlüsseln, Entschlüsseln, Brechen).
@@ -112,13 +116,7 @@ Das Programm implementiert und nutzt folgende kryptographische Techniken:
 6.  Wiederholung:
     *   Nach jeder Operation können Sie wählen, ob Sie eine weitere Operation durchführen oder das Programm beenden möchten.
 
-
-## Bekannte Einschränkungen
-
-*   **Windows-Abhängigkeit:** Die Konsolenausgabe für Umlaute ist Windows-spezifisch.
-*   **Feste Dateinamen:** Das Programm verwendet hartkodierte Dateinamen für Ein- und Ausgabe.
-*   **Speicherverwaltung:** Obwohl `malloc` und `free` verwendet werden, könnten bei sehr großen Eingabetexten oder in Extremsituationen Speicherprobleme auftreten. Eine gründlichere Prüfung auf Speicherlecks und -effizienz wäre für Produktionscode notwendig.
-*   **Robustheit der Kryptoanalyse:** Die Kryptoanalyse-Methoden sind für Lehrzwecke implementiert und funktionieren gut für Standardfälle. Bei sehr kurzen Texten, ungewöhnlichen Sprachstatistiken oder sehr langen Vigenère-Schlüsseln in Abhängigkeit zu einem kurzen Text können sie an ihre Grenzen stoßen.
+    
 
 
 
